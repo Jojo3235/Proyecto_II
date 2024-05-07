@@ -1,43 +1,38 @@
-import csv
-from transformers import pipeline
+import pandas as pd
+from bertopic import BERTopic
 
-# Cargar el modelo pre-entrenado para análisis de sentimientos
-analizador_sentimientos = pipeline("sentiment-analysis")
+# Load your pre-trained BERTopic model
+topic_model = BERTopic.load("MaartenGr/BERTopic_ArXiv")
 
-# Textos de ejemplo junto con los nombres de las personas
-datos = [
-    {"Nombre": "Usuario1", "Oración": "Me encanta este producto, es increíble."},
-    {"Nombre": "Usuario2", "Oración": "No me gusta el servicio, es muy lento."},
-    {"Nombre": "Usuario3", "Oración": "La película fue bastante aburrida."},
-    {"Nombre": "Usuario4", "Oración": "¡Qué maravillosa sorpresa!"},
-    {"Nombre": "Usuario5", "Oración": "Estoy muy decepcionado por el mal servicio recibido."}
-]
+# Read the CSV file
+data = pd.read_csv("tweetspersonas.csv")
 
-# Definir umbral para considerar neutral
-umbral_neutral = 0.2
+# Extract the text data and the corresponding user from the CSV file
+documents = data["full_text"].tolist()
+users = data["user"].tolist()
 
-# Crear o abrir el archivo CSV para escritura
-with open('analisis_sentimientos.csv', mode='w', newline='', encoding='utf-8') as archivo_csv:
-    campos = ['Nombre', 'Oración', 'Sentimiento']
-    escritor_csv = csv.DictWriter(archivo_csv, fieldnames=campos)
-    escritor_csv.writeheader()
+# Adjust the number of topics to match the pre-trained model
+num_topics = len(topic_model.get_topic_info())
 
-    # Analizar sentimientos para cada oración
-    for dato in datos:
-        resultado = analizador_sentimientos(dato["Oración"])
-        etiqueta_sentimiento = resultado[0]['label']
-        probabilidad = resultado[0]['score']
+# 2. Create Topic Model
+topics, _ = topic_model.transform(documents)
 
-        if etiqueta_sentimiento == 'POSITIVE':
-            sentimiento = 'POSITIVO'
-        elif etiqueta_sentimiento == 'NEGATIVE':
-            sentimiento = 'NEGATIVO'
-        elif probabilidad < umbral_neutral:
-            sentimiento = 'NEUTRAL'
-        else:
-            sentimiento = 'INDEFINIDO (probabilidad: {})'.format(probabilidad)
+# 3. Get Topic Information
+topic_info = topic_model.get_topic_info()
 
-        # Escribir en el archivo CSV
-        escritor_csv.writerow({'Nombre': dato['Nombre'], 'Oración': dato['Oración'], 'Sentimiento': sentimiento})
+# Create a list to store dictionaries of user and classification
+result_list = []
 
-print("Los resultados se han guardado en 'analisis_sentimientos.csv'.")
+# Iterate through each user and their corresponding tweet's topic
+for user, topic in zip(users, topics):
+    topic_label = topic_info.loc[topic_info['Topic'] == topic]['Name'].values[0]
+    result_list.append({"user": user, "classification": topic_label})
+
+# Convert the list of dictionaries to a DataFrame
+result_df = pd.DataFrame(result_list)
+
+# Save the results to a new CSV file
+result_df.to_csv("user_classifications.csv", index=False)
+
+# Print the first few rows of the result DataFrame
+print(result_df.head())
