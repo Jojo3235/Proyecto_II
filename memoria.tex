@@ -1,0 +1,271 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{journal}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[top=30mm,left=20mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabla}
+\else
+  \newcommand\tablename{Tabla}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{spanish}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Recomendación de anuncios},
+  pdfauthor={Jorge Almonacid, Rubén Genillo, Humberto Pérez de la Blanca, Cristina Suárez; Universidad San Pablo CEU},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Recomendación de anuncios}
+\author{Jorge Almonacid, Rubén Genillo, Humberto Pérez de la Blanca,
+Cristina Suárez \and Universidad San Pablo CEU}
+\date{}
+
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Indice}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\newpage{}
+
+\section{Brainstorming}\label{brainstorming}
+
+Durante el brainstorming, se exploraron diversas áreas de interés, desde
+la seguridad informática con el análisis de correos maliciosos y el
+desarrollo de un detector de malware, hasta la aplicación de la teoría
+de juegos para identificar posibles trampas, lo que representa un
+enfoque innovador con amplias implicaciones. Además, se abordó el campo
+de la inteligencia artificial con la creación de un modelo de generación
+de texto, lo que refleja un interés en tecnologías avanzadas y su
+impacto potencial.
+
+Se seleccionó una idea centrada en el ámbito del análisis de datos en
+redes sociales para la recomendación de anuncios. Esta propuesta
+demuestra una comprensión perspicaz del papel cada vez más relevante que
+desempeñan las opiniones y tendencias en línea en el mundo del marketing
+digital.
+
+\subsubsection{Necesidades:}\label{necesidades}
+
+Al haber seleccionado la idea centrada en el análisis de datos en redes
+sociales para la recomendación de anuncios, se pone de manifiesto la
+importancia de estar actualizados, ser precisos y comprender las
+respuestas de los clientes. Estas necesidades reflejan la relevancia de
+mantenerse al tanto de las tendencias cambiantes en línea, la precisión
+en la interpretación de datos y la comprensión profunda de las
+interacciones de los clientes en entornos digitales. Este enfoque
+resalta la importancia estratégica del marketing en un mundo cada vez
+más impulsado por la información y las interacciones en línea.
+
+\section{Objetivo}\label{objetivo}
+
+El objetivo de la extracción de datos y opiniones en redes sociales de
+usuarios para la recomendación de anuncios se fundamenta en la necesidad
+de acceder a información pública, en tiempo real y constantemente
+actualizada. Este enfoque estratégico busca aprovechar la riqueza de
+datos disponibles en entornos digitales públicos, garantizar la
+relevancia y actualidad de la información recopilada, y capturar las
+tendencias y opiniones más recientes. Al hacerlo, se busca informar
+decisiones de marketing con datos dinámicos y significativos, alineados
+con las demandas cambiantes del mercado y las interacciones de los
+usuarios en línea.
+
+Además, este enfoque puede tener usos alternativos significativos que
+van más allá de la recomendación de anuncios. Por ejemplo, la extracción
+de datos y opiniones en redes sociales puede ser invaluable para la
+investigación de clientes, permitiendo una comprensión más profunda de
+sus necesidades, preferencias y comportamientos en línea. Asimismo, la
+identificación de \emph{Brand Ambassadors}, es decir, usuarios
+influyentes que puedan promover de manera auténtica una marca, es otro
+beneficio clave de esta estrategia. Además, el manejo de reputación en
+línea se ve reforzado por la capacidad de monitorear y responder de
+manera proactiva a las interacciones en redes sociales, lo que puede
+impactar positivamente la percepción pública de una empresa o producto.
+Estos son solo algunos ejemplos de cómo este enfoque puede ser
+aprovechado para una variedad de aplicaciones estratégicas más allá de
+la publicidad y recomendaciones comerciales.
+
+\section{Tareas}\label{tareas}
+
+La tarea se puede dividir en los siguientes temas:
+
+\subsubsection{Extracción de Datos:}\label{extracciuxf3n-de-datos}
+
+En esta fase, se enfocará en la extracción de datos clave de la
+plataforma Twitter. Se buscará obtener información pública de los
+usuarios, como nombres, biografías, publicaciones, día y hora de
+publicación, comentarios, interacciones como me gusta, seguidores,
+seguidos y hashtags utilizados. Esta información será recopilada a
+través de una API que permitirá acceder a estos datos de manera
+estructurada. Además, se profundizará en la obtención de información
+personal más detallada, como edad, género, localización, ocupación e
+intereses de los usuarios para enriquecer el análisis.
+
+\subsubsection{Filtrar posts
+relevantes:}\label{filtrar-posts-relevantes}
+
+Una vez recopilados los datos, el siguiente paso será filtrar y
+clasificar los posts relevantes. Para lograr esto, se implementará un
+análisis de temas avanzado. Se utilizarán algoritmos especializados como
+el Análisis Semántico Latente (LSA) y la Asignación Latente de Dirichlet
+(LDA) para identificar patrones y agrupar los posts según los temas
+principales que abordan. Este proceso permitirá segmentar la información
+de manera efectiva y comprender mejor las discusiones que tienen lugar
+en la plataforma.
+
+\subsubsection{Análisis de
+sentimiento:}\label{anuxe1lisis-de-sentimiento}
+
+Otro aspecto fundamental de esta tarea es el análisis de sentimiento.
+Aquí se enfocará en determinar la polaridad de las opiniones expresadas
+en los posts recopilados. Para ello, se emplearán lexicons de
+sentimiento que ayudarán a clasificar las opiniones como positivas,
+negativas o neutras. Además, se explorará un método alternativo que
+involucra el uso de LMQL o langchain con Large Language Models para
+mejorar la precisión y profundidad del análisis de sentimiento.
+
+Se estudiarán detenidamente los datos obtenidos de Twitter para llevar a
+cabo estas tareas con rigor y obtener insights significativos que puedan
+impulsar estrategias efectivas en marketing digital y toma de decisiones
+empresariales.
+
+\section{Diagramas}\label{diagramas}
+
+\section{Proyecto}\label{proyecto}
+
+
+
+\end{document}

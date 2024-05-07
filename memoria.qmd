@@ -65,3 +65,11 @@ Se estudiarán detenidamente los datos obtenidos de Twitter para llevar a cabo e
 
 
 ## Proyecto
+
+<!-- extraccion de datos
+  mediante api -> descartada
+  mediante scrapping 
+  manual -> respaldo
+ia para analisis de sentimiento
+ia para topic modeling (clasificar por temas)
+asignacion de anuncios (simplemente diremos algo tipo, "a estos usuarios se les recomendaran anuncios relacionados con "tema" y que se puede ver en la base de datos, una vez lleguen los anuncios se insertaran a la base, se analizaran con topic modeling los resumenes de los anuncios y se enviarán los que coincidan a los usuarios") -->
