@@ -14,7 +14,6 @@ format:
     geometry:
       - top=30mm
       - left=20mm
-    documentclass: journal
     keep-tex: true
 ---
 
@@ -66,10 +65,19 @@ Se estudiarán detenidamente los datos obtenidos de Twitter para llevar a cabo e
 
 ## Proyecto
 
-<!-- extraccion de datos
-  mediante api -> descartada
-  mediante scrapping 
-  manual -> respaldo
-ia para analisis de sentimiento
-ia para topic modeling (clasificar por temas)
-asignacion de anuncios (simplemente diremos algo tipo, "a estos usuarios se les recomendaran anuncios relacionados con "tema" y que se puede ver en la base de datos, una vez lleguen los anuncios se insertaran a la base, se analizaran con topic modeling los resumenes de los anuncios y se enviarán los que coincidan a los usuarios") -->
+#### IA para análisis de sentimiento
+El análisis de sentimiento implica la aplicación de técnicas avanzadas de inteligencia artificial para comprender la carga emocional de los mensajes expresados en las redes sociales. En este proyecto, se explorará un enfoque innovador basado en LMQL (Lenguaje de Modelos de Lenguaje Grande) con Large Language Models. Este método no solo permite clasificar las opiniones como positivas, negativas o neutras, sino que también tiene la capacidad de capturar matices y contextos más sutiles presentes en el lenguaje natural. Esto es crucial para comprender adecuadamente las opiniones de los usuarios y proporcionar recomendaciones precisas de anuncios que se alineen con sus emociones y percepciones.
+
+#### IA para topic modeling (clasificar por temas)
+El topic modeling es una técnica poderosa en el análisis de datos que permite identificar y categorizar automáticamente los temas principales discutidos en grandes conjuntos de documentos, como los mensajes de redes sociales. En este proyecto, se empleará inteligencia artificial para llevar a cabo esta tarea de manera eficiente y precisa. Además de utilizar algoritmos estándar como LSA (Análisis Semántico Latente) y LDA (Asignación Latente de Dirichlet), se explorarán métodos emergentes que mejoren la segmentación y comprensión de las discusiones en la plataforma. Esto permitirá una visión más profunda de las tendencias y preocupaciones de los usuarios, proporcionando así una base sólida para la asignación estratégica de anuncios.
+
+#### Asignación de anuncios
+La asignación de anuncios es un proceso crítico en el marketing digital, donde se seleccionan y presentan anuncios específicos a los usuarios en función de sus intereses y comportamientos en línea. En este proyecto, se implementará un sistema dinámico que adapte las recomendaciones de anuncios en tiempo real. Esto implica no solo considerar los datos demográficos y las preferencias individuales de los usuarios, sino también las tendencias emergentes identificadas a través del análisis de temas.
+
+En el proceso de asignación de anuncios, se realizará una clasificación detallada de los usuarios en grupos específicos en función de los temas relevantes identificados. A estos grupos se les recomendarán anuncios relacionados con los temas específicos que se pueden ver en la base de datos y se analizarán utilizando técnicas de topic modeling los que mejor coincidan con los intereses de cada grupo de usuarios y serán enviados de manera personalizada. Esta estrategia garantiza una mayor relevancia y efectividad en la publicidad dirigida, maximizando así el retorno de la inversión y mejorando la experiencia del usuario en línea.
+
+## Conclusiones
+Este proyecto representa un paso significativo hacia el aprovechamiento ético y efectivo del potencial de los datos en redes sociales. Al superar desafíos como la privacidad de los datos y la precisión del análisis, las soluciones propuestas no solo mejoran las estrategias de marketing digital, sino que también impulsan la comprensión y la colaboración interdisciplinaria en el campo de la ciencia de datos.
+
+La innovación en técnicas de análisis de sentimiento y topic modeling, así como la implementación de un sistema dinámico de asignación de anuncios, destacan el compromiso del proyecto con la excelencia técnica y la adaptabilidad estratégica. Los resultados obtenidos generan insights significativos para el marketing digital e inspiran nuevas investigaciones y desarrollos en el ámbito de la inteligencia artificial y el análisis de datos en redes sociales.
+
