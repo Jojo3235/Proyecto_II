@@ -60,16 +60,122 @@ Se estudiarán detenidamente los datos obtenidos de Twitter para llevar a cabo e
 
 ## Diagramas
 
+Tuvimos que realizar 2 diagramas, por un lado el diagrama de desarrollo, que muestra que actividades se van a realizar en el proyecto. Y por otro lado el diagrama de Gantt, que se encarga de distribuir las tareas y actividades en una línea temporal.
 
+![Diagrama de desarrollo](diagrama%20de%20desarrollo.png)
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth, height=0.4\textheight]{gant1.png}
+    \caption{Gant parte 1}
+    \label{fig:gant1}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth, height=0.4\textheight]{gant2.png}
+    \caption{Gant parte 2}
+    \label{fig:gant2}
+\end{figure}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth, height=0.4\textheight]{gant3.png}
+    \caption{Gantt parte 3}
+    \label{fig:gantt3}
+\end{figure}
+
+{{< pagebreak >}}
 
 
 ## Proyecto
 
 #### IA para análisis de sentimiento
-El análisis de sentimiento implica la aplicación de técnicas avanzadas de inteligencia artificial para comprender la carga emocional de los mensajes expresados en las redes sociales. En este proyecto, se explorará un enfoque innovador basado en LMQL (Lenguaje de Modelos de Lenguaje Grande) con Large Language Models. Este método no solo permite clasificar las opiniones como positivas, negativas o neutras, sino que también tiene la capacidad de capturar matices y contextos más sutiles presentes en el lenguaje natural. Esto es crucial para comprender adecuadamente las opiniones de los usuarios y proporcionar recomendaciones precisas de anuncios que se alineen con sus emociones y percepciones.
+El análisis de sentimiento implica la aplicación de técnicas avanzadas de inteligencia artificial para comprender la carga emocional de los mensajes expresados en las redes sociales. 
+
+El objetivo es determinar la polaridad de las opiniones y emociones de los textos, en nuestro caso empleamos _sentiment lexicons_ basados en unigramas. Estos nos proporcionan las emociones y sentimientos asociados a las palabras individuales de un texto, tomando la emoción y sentimiento de un texto como el mayor sentimiento en este. 
+
+El uso de sentiment lexicons frente a otras técnicas de sentiment analysis ofrece la principal ventaja de ser más rápido, lo que es necesario para hacer el cálculo rápido de opinión de muchos individuos. Cabe aclarar que lo que conseguimos mediante los sentiments lexicons realmente son la positvidad/neutralidad/negatividad de un texto, lo cual no siempre significa siempre sacar una opinión final, ya que si el texto habla muy negativamente sobre un tema y finalmente da un veredicto positivo  se puede ver muy influenciado por una mayor cantidad de comentarios negativos y obtener que dicho texto habla negativamente. O como, por ejemplo, citar el comentario negativo de otra persona en un texto puede alterar negativamente el resultado positivo de un texto. 
+
+Iniciando nuestro análisis de sentimiento probamos distintos sentiment lexicons con opiniones polares, ya que existen otros como _ncr_\footnote{El NRC Emotion Lexicon es una lista de palabras en inglés y sus asociaciones con ocho emociones básicas (ira, miedo, anticipación, confianza, sorpresa, tristeza, alegría y disgusto) y dos sentimientos (negativo y positivo).} que son más concretos con el tipo de emoción, que fueron AFINN y bing. 
+
+* AFINN asigna a ciertas palabras una puntuación de entre -5 y 5, siendo una puntuación negativa un sentimiento negativo y una puntuación positiva un sentimiento positivo. 
+
+* Bing directamente asigna el valor positivo o negativo a cada palabra. 
+
+A la hora de realizar test con texto extraído de twitter y comparar la positividad del texto en si surgían varios inconvenientes. El primero era que, por ejemplo, al analizar las opiniones en twitter del tráiler de la última película de Deadpool se penalizaban palabras como “Strange”, del nombre de un personaje de Marvel \underline{Dr.Strange}, o “KILLED”,  que se refiera a la expresión “they KILLED IT!!!” siendo esta positiva, lo cual se puede llegar a corregir (o incluso prever) al analizar las palabras con una emoción asignada que más aparecen e ignorarlas. Otro problema que surge es no capturar matices de su dominio como tomar en cuenta calificativos delante de una palabra como “no es bueno” o “no es cierto”, sarcasmo, o en general ideas que dependan del contexto. Dados los problemas surge una alternativa, VADER. 
+
+VADER _(Valence Aware Dictionary and sEntiment Reasoner)_ es un sentiment lexicon basado en reglas gramaticales diseñado específicamente para analizar sentimientos expresados en redes sociales. VADER es capaz de analizar la positidad/neutralidad/negatividad un texto y dar un puntuaje ente -1 y 1, y al estar  basado en reglas gramaticales soluciona la mayoría de los principales problemas como la negación o el uso de exclamaciones, e incluso tomar la intensidad de palabras en mayúsculas o tomar sentimientos de emojis hechos con caracteres como “ \text{:(} ”.
+
+Para probar el rendimietno de VADER se utilizaron principalmente 2 datasets pertenecientes a kaggle, IMDB Dataset of 50K Movie Reviews y Massive Rotten Tomatoes Movies & Reviews. Ambos datsets de 50.000 y 1444963 filas respectivamente, contienen reviews de paginas como IMDB y Rotten Tomatoes junto con un sentimiento positivo y negativo asociado. Tras comparar los resultados se obtiene que VADER tuvo un 69,226% de aciertos con el dataset de IMDB y un 58,278% de aciertos, que no esta nada mal comparado con el resto de lexicons, sin embargo, la tolerancia entre falsos sentimientos positivos o falsos sentimientos negativos se pude ir ajustando dependiendo de las restricciones que tenga el análisis.
 
 #### IA para topic modeling (clasificar por temas)
-El topic modeling es una técnica poderosa en el análisis de datos que permite identificar y categorizar automáticamente los temas principales discutidos en grandes conjuntos de documentos, como los mensajes de redes sociales. En este proyecto, se empleará inteligencia artificial para llevar a cabo esta tarea de manera eficiente y precisa. Además de utilizar algoritmos estándar como LSA (Análisis Semántico Latente) y LDA (Asignación Latente de Dirichlet), se explorarán métodos emergentes que mejoren la segmentación y comprensión de las discusiones en la plataforma. Esto permitirá una visión más profunda de las tendencias y preocupaciones de los usuarios, proporcionando así una base sólida para la asignación estratégica de anuncios.
+El topic modeling es una técnica poderosa en el análisis de datos que permite identificar y categorizar automáticamente los temas principales discutidos en grandes conjuntos de documentos, como los mensajes de redes sociales. En este proyecto, se ha empleado inteligencia artificial para llevar a cabo esta tarea de manera eficiente y precisa. Además de utilizar algoritmos estándar como LSA (Análisis Semántico Latente) y LDA (Asignación Latente de Dirichlet), se exploran métodos emergentes que mejoren la segmentación y comprensión de las discusiones en la plataforma. Esto permitirá una visión más profunda de las tendencias y preocupaciones de los usuarios, proporcionando así una base sólida para la asignación estratégica de anuncios.
+
+La _asignación latente de Dirichlet_ es uno de los algoritmos más comunes para el modelado de temas. Sin entrar en los detalles matemáticos del modelo, podemos entender que está guiado por dos principios.
+
+* Cada documento es una mezcla de temas. Visualizamos que cada documento puede contener palabras de varios temas en proporciones específicas. Por ejemplo, en un modelo de dos temas podríamos decir "El Documento 1 consiste en un 90% del tema A y un 10% del tema B, mientras que el Documento 2 está compuesto por un 30% del tema A y un 70% del tema B".
+
+* Cada tema es una mezcla de palabras. Por ejemplo, podríamos imaginar un modelo de dos temas sobre noticias estadounidenses, con un tema para "política" y otro para "entretenimiento". Las palabras más comunes en el tema de política podrían ser "Presidente", "Congreso" y "gobierno", mientras que el tema de entretenimiento podría incluir palabras como "películas", "televisión" y "actor". Es importante destacar que las palabras pueden compartirse entre temas; una palabra como "presupuesto" podría aparecer igualmente en ambos.
+
+LDA es un método matemático usado para estimar los documentos y los temas a la vez. Se trata de encontrar la mezcla de palabras que está asociado a cada tema, y la mezcla de temas que está asociado a cada documento
+
+- Probabilidades de palabras por tema:
+
+
+El paquete tidytext proporciona este método para extraer las probabilidades de palabra por tema, llamadas β ("beta"), del modelo.
+
+``` python
+library(tidytext)
+
+ap_topics <- tidy(ap_lda, matrix = "beta")
+ap_topics
+```
+
+Este código nos da como resultado:
+
+![Resultado](topic.png)
+
+Observa que esto ha convertido el modelo en un formato de un tema por término por fila. Para cada combinación, el modelo calcula la probabilidad de que ese término sea generado a partir de ese tema. Por ejemplo, el término "Aaron" tiene una probabilidad de ser generado desde el tema 1 de $1.686917×10^−12$, pero una probabilidad de ser generado desde el tema 2 de $3.8959408×10^−5$.
+
+A su vez, podríamos utilizar la función `slice_max()` de dplyr para encontrar los 10 términos más comunes dentro de cada tema. Como un marco de datos ordenado (tidy data frame), esto se presta bien a una visualización con ggplot2.
+
+``` python
+library(ggplot2)
+library(dplyr)
+
+ap_top_terms <- ap_topics %>%
+  group_by(topic) %>%
+  slice_max(beta, n = 10) %>% 
+  ungroup() %>%
+  arrange(topic, -beta)
+
+ap_top_terms %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+
+```
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth, height=0.4\textheight]{bytopic.png}
+    \caption{Términos comunes}
+    \label{fig:terminos_comunes}
+\end{figure}
+
+
+
+En el contexto de nuestro proyecto, donde estamos analizando comentarios y usuarios de Twitter para recomendar anuncios, esta explicación sobre el modelado de temas es relevante por varias razones:
+
+1. Identificación de temas relevantes: El modelado de temas nos ayuda a identificar automáticamente los temas principales discutidos en los comentarios de Twitter. Esto nos permite comprender mejor las preocupaciones y tendencias de los usuarios, lo cual es fundamental para adaptar nuestros anuncios de manera efectiva.
+
+2. Segmentación de audiencia: Al entender los diferentes temas discutidos en los comentarios de Twitter, podemos segmentar mejor nuestra audiencia y dirigir nuestros anuncios de manera más precisa a grupos de usuarios con intereses específicos.
+
+3. Optimización de contenido publicitario: Conocer los términos más comunes asociados con cada tema nos permite optimizar el contenido de nuestros anuncios para que sean más relevantes y atractivos para nuestra audiencia objetivo.
 
 #### Asignación de anuncios
 La asignación de anuncios es un proceso crítico en el marketing digital, donde se seleccionan y presentan anuncios específicos a los usuarios en función de sus intereses y comportamientos en línea. En este proyecto, se implementará un sistema dinámico que adapte las recomendaciones de anuncios en tiempo real. Esto implica no solo considerar los datos demográficos y las preferencias individuales de los usuarios, sino también las tendencias emergentes identificadas a través del análisis de temas.
@@ -81,3 +187,32 @@ Este proyecto representa un paso significativo hacia el aprovechamiento ético y
 
 La innovación en técnicas de análisis de sentimiento y topic modeling, así como la implementación de un sistema dinámico de asignación de anuncios, destacan el compromiso del proyecto con la excelencia técnica y la adaptabilidad estratégica. Los resultados obtenidos generan insights significativos para el marketing digital e inspiran nuevas investigaciones y desarrollos en el ámbito de la inteligencia artificial y el análisis de datos en redes sociales.
 
+
+{{< pagebreak >}}
+
+## Bibliografía:
+
+Aquí tienes la bibliografía en formato APA:
+
+Kaggle. (n.d.). IMDb Dataset of 50K Movie Reviews. Retrieved from 
+
+https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
+
+
+Silge, J., & Robinson, D. (2017). Tidy Text Mining with R. O'Reilly Media.
+
+Python Twitter. (n.d.). Getting Started. Retrieved from 
+
+https://python-twitter.readthedocs.io/en/latest/getting_started.html
+
+
+
+
+Kaggle. (n.d.). Massive Rotten Tomatoes Movies & Reviews. Retrieved from 
+
+https://www.kaggle.com/datasets/andrezaza/clapper-massive-rotten-tomatoes-movies-and-reviews
+
+
+Silge, J., & Robinson, D. (2017). Tidy Text Mining with R: Topic Modeling. Retrieved from 
+
+https://www.tidytextmining.com/topicmodeling#alternative-lda-implementations
