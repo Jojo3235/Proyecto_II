@@ -146,6 +146,8 @@ VADER _(Valence Aware Dictionary and sEntiment Reasoner)_ es un sentiment lexico
 
 Para probar el rendimietno de VADER se utilizaron principalmente 2 datasets pertenecientes a kaggle, IMDB Dataset of 50K Movie Reviews y Massive Rotten Tomatoes Movies & Reviews. Ambos datsets de 50.000 y 1444963 filas respectivamente, contienen reviews de paginas como IMDB y Rotten Tomatoes junto con un sentimiento positivo y negativo asociado. Tras comparar los resultados se obtiene que VADER tuvo un 69,226% de aciertos con el dataset de IMDB y un 58,278% de aciertos, que no esta nada mal comparado con el resto de lexicons, sin embargo, la tolerancia entre falsos sentimientos positivos o falsos sentimientos negativos se pude ir ajustando dependiendo de las restricciones que tenga el análisis.
 
+Código para el análisis de sentimiento en el apéndice A, sección 2.
+
 ## IA para topic modeling (clasificar por temas)
 El topic modeling es una técnica poderosa en el análisis de datos que permite identificar y categorizar automáticamente los temas principales discutidos en grandes conjuntos de documentos, como los mensajes de redes sociales. En este proyecto, se ha empleado inteligencia artificial para llevar a cabo esta tarea de manera eficiente y precisa. Además de utilizar algoritmos estándar como LSA (Análisis Semántico Latente) y LDA (Asignación Latente de Dirichlet), se exploran métodos emergentes que mejoren la segmentación y comprensión de las discusiones en la plataforma. Esto permitirá una visión más profunda de las tendencias y preocupaciones de los usuarios, proporcionando así una base sólida para la asignación estratégica de anuncios.
 
@@ -161,7 +163,7 @@ LDA es un método matemático usado para estimar los documentos y los temas a la
 
 Para clasificar los temas usaremos python. Para ello usaremos la librería bertopic, que es una implementación de LDA que utiliza BERT, otro lenguaje de programación orientado al procesamiento natural del lenguaje, para la clasificación de los mensajes. 
 
-Código para el topic modeling en el apéndice A, sección 2.
+Código para el topic modeling en el apéndice A, sección 3.
 
 Este código nos da como resultado un archivo CSV con la clasificación de los usuarios y los temas identificados en sus tweets. Esta información es valiosa para la segmentación de los usuarios y la asignación de anuncios personalizados. Junto con el análisis de sentimientos nos quedaría una tabla de la siguiente forma:
 

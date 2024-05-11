@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.11)  11 MAY 2024 12:26
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.11)  11 MAY 2024 12:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1001,22 +1001,23 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 421.
 [8]
-Underfull \hbox (badness 1466) in paragraph at lines 471--482
+Underfull \hbox (badness 1466) in paragraph at lines 473--484
 \TU/lmr/m/n/10.95 y categorizar automáticamente los temas principales discutidos en grandes conjuntos de
  []
 
 
-Underfull \hbox (badness 1460) in paragraph at lines 497--506
+Underfull \hbox (badness 1460) in paragraph at lines 499--508
 \TU/lmr/m/n/10.95 de dos temas sobre noticias estadounidenses, con un tema para “política” y otro
  []
 
+[9]
 
-LaTeX Warning: File `topic.png' not found on input line 537.
+LaTeX Warning: File `topic.png' not found on input line 539.
 
 ! Unable to load picture or PDF file 'topic.png'.
 <to be read again> 
                    }
-l.537 {\centering \includegraphics{topic.png}
+l.539 {\centering \includegraphics{topic.png}
                                               
 Here is how much of TeX's memory you used:
  25100 strings out of 476752
@@ -1027,4 +1028,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  108i,8n,121p,10902b,416s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on memoria.pdf (8 pages).
+Output written on memoria.pdf (9 pages).
