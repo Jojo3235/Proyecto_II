@@ -257,3 +257,42 @@ En conclusión, el proyecto representa un paso significativo hacia una publicida
     https://www.tidytextmining.com/topicmodeling#alternative-lda-implementations
 
 
+* Aprende Python. "Web Scraping con Python y BeautifulSoup".    
+    
+    Disponible en: https://aprendepython.es/pypi/scraping/beautifulsoup/
+
+
+* Documentación oficial de BeautifulSoup: 
+    
+    https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+
+
+
+* Twitter Developer. "Tools and Libraries". 
+
+    Disponible en: https://developer.twitter.com/en/docs/twitter-api/tools-and-libraries/v2
+
+
+* Python Twitter. Documentación oficial. 
+    
+    Disponible en: https://python-twitter.readthedocs.io/en/latest/getting_started.html
+
+* Ron Atkaya. "How to Scrape Tweets from Twitter for Free (2023)". 
+
+    Disponible en: https://medium.com/@mronatkaya/how-to-scrape-tweets-from-twitter-for-free-2023-7562fd8121cc
+
+* Robert Brown. "How to Scrape Twitter Data: A Step-by-Step Guide". 
+    
+    Disponible en: https://medium.com/@robertbrown15228/how-to-scrape-twitter-data-a-step-by-step-guide-1221de91a23a#:~:text=Twitter%20data%20is%20crucial%20in,making%20and%20targeted%20marketing%20strategies.
+
+* Twitter Developer. "Search Tweets: Python". 
+
+    Disponible en: https://github.com/twitterdev/search-tweets-python
+
+* Julia Silge y David Robinson. "Tidy Text Mining with R". 
+
+    Disponible en: https://www.tidytextmining.com/topicmodeling
+
+* Julia Silge y David Robinson. "Tidy Text Mining with R". 
+    
+    Disponible en: https://www.tidytextmining.com/sentiment
