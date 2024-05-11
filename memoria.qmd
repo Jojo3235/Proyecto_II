@@ -95,6 +95,10 @@ Tuvimos que realizar 2 diagramas, por un lado el diagrama de desarrollo, que mue
 
 ## Proyecto
 
+#### Extracción de datos
+
+Durante la fase inicial de nuestro proyecto, nos encontramos con un desafío inesperado al intentar extraer datos de la plataforma Twitter utilizando su API, ya que las configuraciones de privacidad habían experimentado cambios significativos, lo que nos impedía acceder a la información de manera directa como habíamos planeado inicialmente. Ante esta situación, optamos por un enfoque alternativo y eficaz mediante el uso de Twint para realizar web scraping. Twint es una herramienta de scraping para Twitter que nos permitió acceder a datos públicos disponibles en perfiles y publicaciones, superando así las restricciones impuestas por la API. Esta estrategia nos permitió recopilar una gran cantidad de datos relevantes de manera eficiente y sin violar las políticas de privacidad de la plataforma. Además, en paralelo a la extracción de datos con Twint, estábamos utilizando una estrategia de "fuerza bruta" para recopilar información adicional. Esta técnica nos permitió explorar exhaustivamente diversas fuentes de datos públicos, complementando así los datos obtenidos a través del web scraping con Twint. En resumen, el uso combinado de Twint y la extracción de datos con fuerza bruta nos proporcionó una solución integral para obtener datos valiosos de Twitter, sentando así las bases para nuestro posterior análisis y recomendaciones.
+
 #### IA para análisis de sentimiento
 El análisis de sentimiento implica la aplicación de técnicas avanzadas de inteligencia artificial para comprender la carga emocional de los mensajes expresados en las redes sociales. 
 
