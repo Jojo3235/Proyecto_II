@@ -203,19 +203,13 @@ Una vez tenemos ambas tablas en la base de datos simplemente se hará un join en
 ## Conclusiones
 
 
-<!-- El proyecto de análisis de datos en redes sociales para la recomendación de anuncios representa una amalgama de enfoques avanzados en inteligencia artificial y minería de datos aplicados al mundo del marketing digital. A través de técnicas como el análisis de sentimientos, el modelado de temas y la asignación dinámica de anuncios, se busca comprender y aprovechar la vasta cantidad de información generada en plataformas como Twitter para ofrecer recomendaciones de anuncios más relevantes y efectivas.
+El proyecto de análisis de datos en redes sociales para la recomendación de anuncios representa una amalgama de enfoques avanzados en inteligencia artificial y minería de datos aplicados al mundo del marketing digital. A través de técnicas como el análisis de sentimientos, el modelado de temas y la asignación dinámica de anuncios, se busca comprender y aprovechar la vasta cantidad de información generada en plataformas como Twitter para ofrecer recomendaciones de anuncios más relevantes y efectivas.
 
 La capacidad de adaptación en tiempo real, la personalización de las recomendaciones y la comprensión profunda de los intereses individuales de los usuarios son pilares fundamentales de este proyecto. Al emplear algoritmos avanzados y técnicas innovadoras, se busca no solo mejorar la efectividad de la publicidad en línea, sino también maximizar el retorno de la inversión y mejorar la experiencia del usuario.
 
 Además, más allá de su aplicación directa en la publicidad digital, el proyecto abre nuevas oportunidades en áreas como la investigación de clientes, la gestión de la reputación en línea y la identificación de embajadores de marca. Esto destaca la versatilidad y el potencial estratégico de la minería de datos en redes sociales en el panorama empresarial actual.
 
-En conclusión, el proyecto representa un paso significativo hacia una publicidad más inteligente y centrada en el usuario, aprovechando el vasto conjunto de datos disponibles en las redes sociales para informar decisiones comerciales más acertadas y estratégicas. -->
-
-
-Este proyecto representa un paso significativo hacia el aprovechamiento ético y efectivo del potencial de los datos en redes sociales. Al superar desafíos como la privacidad de los datos y la precisión del análisis, las soluciones propuestas no solo mejoran las estrategias de marketing digital, sino que también impulsan la comprensión y la colaboración interdisciplinaria en el campo de la ciencia de datos.
-
-La innovación en técnicas de análisis de sentimiento y topic modeling, así como la implementación de un sistema dinámico de asignación de anuncios, destacan el compromiso del proyecto con la excelencia técnica y la adaptabilidad estratégica. Los resultados obtenidos generan insights significativos para el marketing digital e inspiran nuevas investigaciones y desarrollos en el ámbito de la inteligencia artificial y el análisis de datos en redes sociales.
-
+En conclusión, el proyecto representa un paso significativo hacia una publicidad más inteligente y centrada en el usuario, aprovechando el vasto conjunto de datos disponibles en las redes sociales para informar decisiones comerciales más acertadas y estratégicas.
 
 {{< pagebreak >}}
 
