@@ -55,8 +55,12 @@ Una vez recopilados los datos, el siguiente paso será filtrar y clasificar los 
 #### Análisis de sentimiento:
 Otro aspecto fundamental de esta tarea es el análisis de sentimiento. Aquí se enfocará en determinar la polaridad de las opiniones expresadas en los posts recopilados. Para ello, se emplearán lexicons de sentimiento que ayudarán a clasificar las opiniones como positivas, negativas o neutras. Además, se explorará un método alternativo que involucra el uso de LMQL o langchain con Large Language Models para mejorar la precisión y profundidad del análisis de sentimiento.
 
-Se estudiarán detenidamente los datos obtenidos de Twitter para llevar a cabo estas tareas con rigor y obtener insights significativos que puedan impulsar estrategias efectivas en marketing digital y toma de decisiones empresariales.
+Se estudiarán detenidamente los datos obtenidos de Twitter para llevar a cabo estas tareas con rigor y obtener información significativa que puedan impulsar estrategias efectivas en marketing digital y toma de decisiones empresariales.
 
+#### Topic modeling:
+Finalmente aplicamos el topic modeling para categorizar automáticamente los temas principales de los datos extraídos previamente, los cuales se guardarán en una base de datos. Una vez tenemos los temas, se procederá a la asignación de anuncios, los cuales serán clasificados mediante un resumen por el mismo algoritmo de topic modeling y serán asignados a la gente con las que coincidan los temas.
+
+{{< pagebreak >}}
 
 ## Diagramas
 
@@ -108,7 +112,9 @@ A la hora de realizar test con texto extraído de twitter y comparar la positivi
 
 VADER _(Valence Aware Dictionary and sEntiment Reasoner)_ es un sentiment lexicon basado en reglas gramaticales diseñado específicamente para analizar sentimientos expresados en redes sociales. VADER es capaz de analizar la positidad/neutralidad/negatividad un texto y dar un puntuaje ente -1 y 1, y al estar  basado en reglas gramaticales soluciona la mayoría de los principales problemas como la negación o el uso de exclamaciones, e incluso tomar la intensidad de palabras en mayúsculas o tomar sentimientos de emojis hechos con caracteres como “ \text{:(} ”.
 
-Para probar el rendimietno de VADER se utilizaron principalmente 2 datasets pertenecientes a kaggle, IMDB Dataset of 50K Movie Reviews y Massive Rotten Tomatoes Movies & Reviews. Ambos datsets de 50.000 y 1444963 filas respectivamente, contienen reviews de paginas como IMDB y Rotten Tomatoes junto con un sentimiento positivo y negativo asociado. Tras comparar los resultados se obtiene que VADER tuvo un 69,226% de aciertos con el dataset de IMDB y un 58,278% de aciertos, que no esta nada mal comparado con el resto de lexicons, sin embargo, la tolerancia entre falsos sentimientos positivos o falsos sentimientos negativos se pude ir ajustando dependiendo de las restricciones que tenga el análisis.
+Para probar el rendimietno de VADER se utilizaron principalmente 2 datasets pertenecientes a kaggle, IMDB Dataset of 50K Movie Reviews\footnote{Retrieved from
+https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
+} y Massive Rotten Tomatoes Movies & Reviews\footnote{Retrieved from https://www.kaggle.com/datasets/andrezaza/clapper-massive-rotten-tomatoes-movies-and-reviews}. Ambos datsets de 50.000 y 1444963 filas respectivamente, contienen reviews de paginas como IMDB y Rotten Tomatoes junto con un sentimiento positivo y negativo asociado. Tras comparar los resultados se obtiene que VADER tuvo un 69,226% de aciertos con el dataset de IMDB y un 58,278% de aciertos, que no esta nada mal comparado con el resto de lexicons, sin embargo, la tolerancia entre falsos sentimientos positivos o falsos sentimientos negativos se pude ir ajustando dependiendo de las restricciones que tenga el análisis.
 
 #### IA para topic modeling (clasificar por temas)
 El topic modeling es una técnica poderosa en el análisis de datos que permite identificar y categorizar automáticamente los temas principales discutidos en grandes conjuntos de documentos, como los mensajes de redes sociales. En este proyecto, se ha empleado inteligencia artificial para llevar a cabo esta tarea de manera eficiente y precisa. Además de utilizar algoritmos estándar como LSA (Análisis Semántico Latente) y LDA (Asignación Latente de Dirichlet), se exploran métodos emergentes que mejoren la segmentación y comprensión de las discusiones en la plataforma. Esto permitirá una visión más profunda de las tendencias y preocupaciones de los usuarios, proporcionando así una base sólida para la asignación estratégica de anuncios.
@@ -121,51 +127,53 @@ La _asignación latente de Dirichlet_ es uno de los algoritmos más comunes para
 
 LDA es un método matemático usado para estimar los documentos y los temas a la vez. Se trata de encontrar la mezcla de palabras que está asociado a cada tema, y la mezcla de temas que está asociado a cada documento
 
-- Probabilidades de palabras por tema:
+- Clasificación:
 
-
-El paquete tidytext proporciona este método para extraer las probabilidades de palabra por tema, llamadas β ("beta"), del modelo.
-
-``` python
-library(tidytext)
-
-ap_topics <- tidy(ap_lda, matrix = "beta")
-ap_topics
-```
-
-Este código nos da como resultado:
-
-![Resultado](topic.png)
-
-Observa que esto ha convertido el modelo en un formato de un tema por término por fila. Para cada combinación, el modelo calcula la probabilidad de que ese término sea generado a partir de ese tema. Por ejemplo, el término "Aaron" tiene una probabilidad de ser generado desde el tema 1 de $1.686917×10^−12$, pero una probabilidad de ser generado desde el tema 2 de $3.8959408×10^−5$.
-
-A su vez, podríamos utilizar la función `slice_max()` de dplyr para encontrar los 10 términos más comunes dentro de cada tema. Como un marco de datos ordenado (tidy data frame), esto se presta bien a una visualización con ggplot2.
+Para clasificar los temas usaremos python. Para ello usaremos la librería bertopic, que es una implementación de LDA que utiliza BERT, otro lenguaje de programación orientado al procesamiento natural del lenguaje, para la clasificación de los mensajes. 
 
 ``` python
-library(ggplot2)
-library(dplyr)
+# Importamos las librerías necesarias
+import pandas as pd
+from bertopic import BERTopic
 
-ap_top_terms <- ap_topics %>%
-  group_by(topic) %>%
-  slice_max(beta, n = 10) %>% 
-  ungroup() %>%
-  arrange(topic, -beta)
+# Cargamos el modelo preentrenado
+topic_model = BERTopic.load("MaartenGr/BERTopic_ArXiv")
 
-ap_top_terms %>%
-  mutate(term = reorder_within(term, beta, topic)) %>%
-  ggplot(aes(beta, term, fill = factor(topic))) +
-  geom_col(show.legend = FALSE) +
-  facet_wrap(~ topic, scales = "free") +
-  scale_y_reordered()
+# Leemos los datos
+data = pd.read_csv("tweetspersonas.csv")
 
+# Extraemos la información de los tweets y los usuarios
+documents = data["full_text"].tolist()
+users = data["user"].tolist()
+
+# Ajustamos el modelo de temas a los documentos
+num_topics = len(topic_model.get_topic_info())
+
+# 2. Creamos el modelo de temas
+topics, _ = topic_model.transform(documents)
+
+# 3. Obtenemos la información de los temas
+topic_info = topic_model.get_topic_info()
+
+# Creamos una lista vacía para almacenar los resultados
+result_list = []
+
+# Iteramos sobre los tweets para asignar una etiqueta de tema a cada usuario
+for user, topic in zip(users, topics):
+    topic_label = topic_info.loc[topic_info['Topic'] == topic]['Name'].values[0]
+    result_list.append({"user": user, "classification": topic_label})
+
+# Convertimos la lista de resultados en un marco de datos de pandas
+result_df = pd.DataFrame(result_list)
+
+# Guardamos la clasificación de los usuarios en un archivo CSV
+result_df.to_csv("user_classifications.csv", index=False)
+
+# Imprimimos los primeros resultados
+print(result_df.head())
 ```
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth, height=0.4\textheight]{bytopic.png}
-    \caption{Términos comunes}
-    \label{fig:terminos_comunes}
-\end{figure}
+Este código nos da como resultado un archivo CSV con la clasificación de los usuarios y los temas identificados en sus tweets. Esta información es valiosa para la segmentación de los usuarios y la asignación de anuncios personalizados. 
 
 
 
@@ -177,12 +185,33 @@ En el contexto de nuestro proyecto, donde estamos analizando comentarios y usuar
 
 3. Optimización de contenido publicitario: Conocer los términos más comunes asociados con cada tema nos permite optimizar el contenido de nuestros anuncios para que sean más relevantes y atractivos para nuestra audiencia objetivo.
 
+Una vez tenemos los temas identificados, podemos proceder a la asignación de anuncios. 
+
+
 #### Asignación de anuncios
 La asignación de anuncios es un proceso crítico en el marketing digital, donde se seleccionan y presentan anuncios específicos a los usuarios en función de sus intereses y comportamientos en línea. En este proyecto, se implementará un sistema dinámico que adapte las recomendaciones de anuncios en tiempo real. Esto implica no solo considerar los datos demográficos y las preferencias individuales de los usuarios, sino también las tendencias emergentes identificadas a través del análisis de temas.
 
-En el proceso de asignación de anuncios, se realizará una clasificación detallada de los usuarios en grupos específicos en función de los temas relevantes identificados. A estos grupos se les recomendarán anuncios relacionados con los temas específicos que se pueden ver en la base de datos y se analizarán utilizando técnicas de topic modeling los que mejor coincidan con los intereses de cada grupo de usuarios y serán enviados de manera personalizada. Esta estrategia garantiza una mayor relevancia y efectividad en la publicidad dirigida, maximizando así el retorno de la inversión y mejorando la experiencia del usuario en línea.
+En el proceso de asignación de anuncios, se realizará una clasificación detallada de los usuarios en grupos específicos en función de los temas relevantes identificados. A estos grupos se les recomendarán anuncios relacionados con los temas específicos que se pueden ver en la base de datos y se analizarán utilizando técnicas de topic modeling los que mejor coincidan sus intereses y serán mostrados de manera personalizada. Esta estrategia garantiza una mayor relevancia y efectividad en la publicidad dirigida, maximizando así el retorno de la inversión y mejorando la experiencia del usuario en línea.
+
+En un nivel más técnico, lo que se haría sería, dado un resumen del anuncio, clasificarlo mediante el mismo algoritmo y datos de entrenamiento y se guardarán en otra tabla de la base de datos, que estará estructurada de la siguiente manera: 
+
+| Empresa anunciante | Anuncio | Resumen | Tema |
+
+Una vez tenemos ambas tablas en la base de datos simplemente se hará un join entre ambas tablas y se mostrará el anuncio a los usuarios que coincidan con el tema del anuncio. 
+
 
 ## Conclusiones
+
+
+<!-- El proyecto de análisis de datos en redes sociales para la recomendación de anuncios representa una amalgama de enfoques avanzados en inteligencia artificial y minería de datos aplicados al mundo del marketing digital. A través de técnicas como el análisis de sentimientos, el modelado de temas y la asignación dinámica de anuncios, se busca comprender y aprovechar la vasta cantidad de información generada en plataformas como Twitter para ofrecer recomendaciones de anuncios más relevantes y efectivas.
+
+La capacidad de adaptación en tiempo real, la personalización de las recomendaciones y la comprensión profunda de los intereses individuales de los usuarios son pilares fundamentales de este proyecto. Al emplear algoritmos avanzados y técnicas innovadoras, se busca no solo mejorar la efectividad de la publicidad en línea, sino también maximizar el retorno de la inversión y mejorar la experiencia del usuario.
+
+Además, más allá de su aplicación directa en la publicidad digital, el proyecto abre nuevas oportunidades en áreas como la investigación de clientes, la gestión de la reputación en línea y la identificación de embajadores de marca. Esto destaca la versatilidad y el potencial estratégico de la minería de datos en redes sociales en el panorama empresarial actual.
+
+En conclusión, el proyecto representa un paso significativo hacia una publicidad más inteligente y centrada en el usuario, aprovechando el vasto conjunto de datos disponibles en las redes sociales para informar decisiones comerciales más acertadas y estratégicas. -->
+
+
 Este proyecto representa un paso significativo hacia el aprovechamiento ético y efectivo del potencial de los datos en redes sociales. Al superar desafíos como la privacidad de los datos y la precisión del análisis, las soluciones propuestas no solo mejoran las estrategias de marketing digital, sino que también impulsan la comprensión y la colaboración interdisciplinaria en el campo de la ciencia de datos.
 
 La innovación en técnicas de análisis de sentimiento y topic modeling, así como la implementación de un sistema dinámico de asignación de anuncios, destacan el compromiso del proyecto con la excelencia técnica y la adaptabilidad estratégica. Los resultados obtenidos generan insights significativos para el marketing digital e inspiran nuevas investigaciones y desarrollos en el ámbito de la inteligencia artificial y el análisis de datos en redes sociales.
@@ -192,7 +221,6 @@ La innovación en técnicas de análisis de sentimiento y topic modeling, así c
 
 ## Bibliografía:
 
-Aquí tienes la bibliografía en formato APA:
 
 Kaggle. (n.d.). IMDb Dataset of 50K Movie Reviews. Retrieved from 
 
