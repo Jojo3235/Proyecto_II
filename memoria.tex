@@ -53,46 +53,6 @@
   \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{241,243,245}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
-\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -202,7 +162,9 @@ Cristina Suárez \and Universidad San Pablo CEU}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
-\textbf{Resumen}
+\newpage{}
+
+\section{Resumen}\label{resumen}
 
 Este proyecto tiene como objetivo principal mejorar la efectividad de la
 publicidad digital mediante el análisis de datos en redes sociales,
@@ -235,7 +197,7 @@ topic modeling
 
 \newpage{}
 
-\subsection{Introducción}\label{introducciuxf3n}
+\section{Introducción}\label{introducciuxf3n}
 
 En el contexto del creciente panorama digital, la extracción y análisis
 de datos de redes sociales se ha convertido en un componente crucial
@@ -244,7 +206,7 @@ este proyecto, nos enfocamos en la aplicación de técnicas de
 inteligencia artificial para la extracción, análisis y asignación de
 anuncios basados en datos obtenidos de la plataforma Twitter.
 
-\subsection{Brainstorming}\label{brainstorming}
+\section{Brainstorming}\label{brainstorming}
 
 Durante el brainstorming, se exploraron diversas áreas de interés, desde
 la seguridad informática con el análisis de correos maliciosos y el
@@ -276,7 +238,7 @@ interacciones de los clientes en entornos digitales. Este enfoque
 resalta la importancia estratégica del marketing en un mundo cada vez
 más impulsado por la información y las interacciones en línea.
 
-\subsection{Objetivo}\label{objetivo}
+\section{Objetivo}\label{objetivo}
 
 El objetivo de la extracción de datos y opiniones en redes sociales de
 usuarios para la recomendación de anuncios se fundamenta en la necesidad
@@ -304,11 +266,11 @@ Estos son solo algunos ejemplos de cómo este enfoque puede ser
 aprovechado para una variedad de aplicaciones estratégicas más allá de
 la publicidad y recomendaciones comerciales.
 
-\subsection{Tareas}\label{tareas}
+\section{Tareas}\label{tareas}
 
 La tarea se puede dividir en los siguientes temas:
 
-\paragraph{Extracción de Datos:}\label{extracciuxf3n-de-datos}
+\subsection{Extracción de Datos:}\label{extracciuxf3n-de-datos}
 
 En esta fase, se enfocará en la extracción de datos clave de la
 plataforma Twitter. Se buscará obtener información pública de los
@@ -320,7 +282,7 @@ estructurada. Además, se profundizará en la obtención de información
 personal más detallada, como edad, género, localización, ocupación e
 intereses de los usuarios para enriquecer el análisis.
 
-\paragraph{Filtrar posts relevantes:}\label{filtrar-posts-relevantes}
+\subsection{Filtrar posts relevantes:}\label{filtrar-posts-relevantes}
 
 Una vez recopilados los datos, el siguiente paso será filtrar y
 clasificar los posts relevantes. Para lograr esto, se implementará un
@@ -331,7 +293,7 @@ principales que abordan. Este proceso permitirá segmentar la información
 de manera efectiva y comprender mejor las discusiones que tienen lugar
 en la plataforma.
 
-\paragraph{Análisis de sentimiento:}\label{anuxe1lisis-de-sentimiento}
+\subsection{Análisis de sentimiento:}\label{anuxe1lisis-de-sentimiento}
 
 Otro aspecto fundamental de esta tarea es el análisis de sentimiento.
 Aquí se enfocará en determinar la polaridad de las opiniones expresadas
@@ -346,7 +308,7 @@ cabo estas tareas con rigor y obtener información significativa que
 puedan impulsar estrategias efectivas en marketing digital y toma de
 decisiones empresariales.
 
-\paragraph{Topic modeling:}\label{topic-modeling}
+\subsection{Topic modeling:}\label{topic-modeling}
 
 Finalmente aplicamos el topic modeling para categorizar automáticamente
 los temas principales de los datos extraídos previamente, los cuales se
@@ -357,7 +319,7 @@ gente con las que coincidan los temas.
 
 \newpage{}
 
-\subsection{Diagramas}\label{diagramas}
+\section{Diagramas}\label{diagramas}
 
 Tuvimos que realizar 2 diagramas, por un lado el diagrama de desarrollo,
 que muestra que actividades se van a realizar en el proyecto. Y por otro
@@ -397,9 +359,9 @@ actividades en una línea temporal.
 
 \newpage{}
 
-\subsection{Proyecto}\label{proyecto}
+\section{Proyecto}\label{proyecto}
 
-\paragraph{Extracción de Datos}\label{extracciuxf3n-de-datos-1}
+\subsection{Extracción de Datos}\label{extracciuxf3n-de-datos-1}
 
 La extracción de datos es una parte fundamental de la minería de datos
 en redes sociales. Para este proyecto, se pensó en extraer datos de
@@ -424,59 +386,12 @@ Además, optamos por analizar los textos en inglés para facilitar la
 integración con las redes neuronales empleadas en el análisis de
 sentimientos y el topic modeling.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Importamos las librerías necesarias}
-\ImportTok{from}\NormalTok{ twikit }\ImportTok{import}\NormalTok{ Client}
-\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
-
-\CommentTok{\# Creamos un cliente de Twitter con las credenciales necesarias}
-\NormalTok{client }\OperatorTok{=}\NormalTok{ Client(}\StringTok{\textquotesingle{}en{-}US\textquotesingle{}}\NormalTok{)}
-
-\CommentTok{\#\# Esta parte solo se runea la primera vez para guardar las cookies, después la comentamos o eliminamos}
-\CommentTok{\# client.login(}
-\CommentTok{\#     auth\_info\_1=\textquotesingle{}\_\_\_\_\_\_\_\_\_\_\_\_\_\textquotesingle{},}
-\CommentTok{\#     password=\textquotesingle{}\_\_\_\_\_\_\textquotesingle{},}
-\CommentTok{\# )}
-\CommentTok{\# client.save\_cookies(\textquotesingle{}cookies.json\textquotesingle{});}
-
-\CommentTok{\# Cargamos las cookies para no tener que iniciar sesión cada vez}
-\NormalTok{client.load\_cookies(path}\OperatorTok{=}\StringTok{\textquotesingle{}cookies.json\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\# Obtenemos los tweets de un usuario específico (esto se modifica a mano para cada persona)}
-\NormalTok{user }\OperatorTok{=}\NormalTok{ client.get\_user\_by\_screen\_name(}\StringTok{\textquotesingle{}ElonMusk\textquotesingle{}}\NormalTok{)}
-\NormalTok{tweets }\OperatorTok{=}\NormalTok{ user.get\_tweets(}\StringTok{\textquotesingle{}Tweets\textquotesingle{}}\NormalTok{)}
-
-\CommentTok{\# Creamos una lista vacía para almacenar los tweets}
-\NormalTok{tweets\_to\_store }\OperatorTok{=}\NormalTok{ []}\OperatorTok{;}
-
-\CommentTok{\# Iteramos sobre los tweets para extraer la información relevante}
-\BuiltInTok{iter} \OperatorTok{=} \DecValTok{0}
-\NormalTok{Itmax }\OperatorTok{=} \DecValTok{2}
-
-\ControlFlowTok{while} \BuiltInTok{iter} \OperatorTok{\textless{}}\NormalTok{ Itmax:}
-    \ControlFlowTok{for}\NormalTok{ tweet }\KeywordTok{in}\NormalTok{ tweets:}
-\NormalTok{        tweets\_to\_store.append(\{}
-            \StringTok{\textquotesingle{}created\_at\textquotesingle{}}\NormalTok{: tweet.created\_at,}
-            \StringTok{\textquotesingle{}favorite\_count\textquotesingle{}}\NormalTok{: tweet.favorite\_count,}
-            \StringTok{\textquotesingle{}full\_text\textquotesingle{}}\NormalTok{: tweet.text,}
-            \StringTok{\textquotesingle{}user\textquotesingle{}}\NormalTok{: tweet.user.screen\_name,}
-\NormalTok{        \})}
-\NormalTok{    tweets }\OperatorTok{=}\NormalTok{ tweets.}\BuiltInTok{next}\NormalTok{()}
-    \BuiltInTok{iter} \OperatorTok{+=} \DecValTok{1}
-    \BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(tweets\_to\_store))}
-
-\CommentTok{\# Convertimos la lista de tweets en un marco de datos de pandas}
-\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(tweets\_to\_store)}
-\CommentTok{\# Guardamos los tweets en un archivo CSV}
-\NormalTok{df.to\_csv(}\StringTok{\textquotesingle{}tweets.csv\textquotesingle{}}\NormalTok{, index}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+Código para la extracción de datos en el apéndice A, sección 1.
 
 Una vez hemos obtenido los datos, podemos proceder a la siguiente fase
 del proyecto, el análisis de sentimientos.
 
-\paragraph{IA para análisis de
+\subsection{IA para análisis de
 sentimiento}\label{ia-para-anuxe1lisis-de-sentimiento}
 
 El análisis de sentimiento implica la aplicación de técnicas avanzadas
@@ -550,7 +465,7 @@ entre falsos sentimientos positivos o falsos sentimientos negativos se
 pude ir ajustando dependiendo de las restricciones que
 tenga~el~análisis.
 
-\paragraph{IA para topic modeling (clasificar por
+\subsection{IA para topic modeling (clasificar por
 temas)}\label{ia-para-topic-modeling-clasificar-por-temas}
 
 El topic modeling es una técnica poderosa en el análisis de datos que
@@ -606,49 +521,7 @@ librería bertopic, que es una implementación de LDA que utiliza BERT,
 otro lenguaje de programación orientado al procesamiento natural del
 lenguaje, para la clasificación de los mensajes.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Importamos las librerías necesarias}
-\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
-\ImportTok{from}\NormalTok{ bertopic }\ImportTok{import}\NormalTok{ BERTopic}
-
-\CommentTok{\# Cargamos el modelo preentrenado}
-\NormalTok{topic\_model }\OperatorTok{=}\NormalTok{ BERTopic.load(}\StringTok{"MaartenGr/BERTopic\_ArXiv"}\NormalTok{)}
-
-\CommentTok{\# Leemos los datos}
-\NormalTok{data }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{"tweetspersonas.csv"}\NormalTok{)}
-
-\CommentTok{\# Extraemos la información de los tweets y los usuarios}
-\NormalTok{documents }\OperatorTok{=}\NormalTok{ data[}\StringTok{"full\_text"}\NormalTok{].tolist()}
-\NormalTok{users }\OperatorTok{=}\NormalTok{ data[}\StringTok{"user"}\NormalTok{].tolist()}
-
-\CommentTok{\# Ajustamos el modelo de temas a los documentos}
-\NormalTok{num\_topics }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(topic\_model.get\_topic\_info())}
-
-\CommentTok{\# 2. Creamos el modelo de temas}
-\NormalTok{topics, \_ }\OperatorTok{=}\NormalTok{ topic\_model.transform(documents)}
-
-\CommentTok{\# 3. Obtenemos la información de los temas}
-\NormalTok{topic\_info }\OperatorTok{=}\NormalTok{ topic\_model.get\_topic\_info()}
-
-\CommentTok{\# Creamos una lista vacía para almacenar los resultados}
-\NormalTok{result\_list }\OperatorTok{=}\NormalTok{ []}
-
-\CommentTok{\# Iteramos sobre los tweets para asignar una etiqueta de tema a cada usuario}
-\ControlFlowTok{for}\NormalTok{ user, topic }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(users, topics):}
-\NormalTok{    topic\_label }\OperatorTok{=}\NormalTok{ topic\_info.loc[topic\_info[}\StringTok{\textquotesingle{}Topic\textquotesingle{}}\NormalTok{] }\OperatorTok{==}\NormalTok{ topic][}\StringTok{\textquotesingle{}Name\textquotesingle{}}\NormalTok{].values[}\DecValTok{0}\NormalTok{]}
-\NormalTok{    result\_list.append(\{}\StringTok{"user"}\NormalTok{: user, }\StringTok{"classification"}\NormalTok{: topic\_label\})}
-
-\CommentTok{\# Convertimos la lista de resultados en un marco de datos de pandas}
-\NormalTok{result\_df }\OperatorTok{=}\NormalTok{ pd.DataFrame(result\_list)}
-
-\CommentTok{\# Guardamos la clasificación de los usuarios en un archivo CSV}
-\NormalTok{result\_df.to\_csv(}\StringTok{"user\_classifications.csv"}\NormalTok{, index}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
-
-\CommentTok{\# Imprimimos los primeros resultados}
-\BuiltInTok{print}\NormalTok{(result\_df.head())}
-\end{Highlighting}
-\end{Shaded}
+Código para el topic modeling en el apéndice A, sección 2.
 
 Este código nos da como resultado un archivo CSV con la clasificación de
 los usuarios y los temas identificados en sus tweets. Esta información
@@ -703,7 +576,7 @@ el modelado de temas es relevante por varias razones:
 Una vez tenemos los temas identificados, podemos proceder a la
 asignación de anuncios.
 
-\paragraph{Asignación de anuncios}\label{asignaciuxf3n-de-anuncios}
+\subsection{Asignación de anuncios}\label{asignaciuxf3n-de-anuncios}
 
 La asignación de anuncios es un proceso crítico en el marketing digital,
 donde se seleccionan y presentan anuncios específicos a los usuarios en
@@ -737,7 +610,7 @@ join entre ambas tablas para los elementos cuya favorabilidad sea
 positiva y se mostrará el anuncio a los usuarios que coincidan con el
 tema del anuncio.
 
-\subsection{Conclusiones}\label{conclusiones}
+\section{Conclusiones}\label{conclusiones}
 
 El proyecto de análisis de datos en redes sociales para la recomendación
 de anuncios representa una amalgama de enfoques avanzados en
@@ -769,7 +642,7 @@ decisiones comerciales más acertadas y estratégicas.
 
 \newpage{}
 
-\subsection{Bibliografía:}\label{bibliografuxeda}
+\section{Bibliografía:}\label{bibliografuxeda}
 
 Aquí tienes la bibliografía en formato APA:
 
