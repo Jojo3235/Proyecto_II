@@ -202,7 +202,33 @@ Cristina Suárez \and Universidad San Pablo CEU}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+\textbf{ABSTRACT}
+
+El proyecto se enfoca en la extracción y análisis de datos de Twitter
+para la recomendación de anuncios personalizados. Para superar las
+limitaciones de la API de Twitter, se implementaron técnicas de web
+scraping con Twint y extracción de datos por ``fuerza bruta''. Con esta
+información obtenida, se procedió a aplicar técnicas de análisis de
+sentimientos para comprender las emociones expresadas en los
+comentarios. Además, se utilizó el modelado de temas para identificar
+los principales temas discutidos en la plataforma. Integrando estos
+resultados, se desarrolló un sistema de asignación de anuncios dinámico
+que se adapta a los temas identificados, mejorando así la relevancia y
+efectividad de la publicidad dirigida.
+
+\textbf{Palabras clave:} marketing - anuncios - sentiment analysis -
+topic modeling
+
 \newpage{}
+
+\subsection{Introducción}\label{introducciuxf3n}
+
+En el contexto del creciente panorama digital, la extracción y análisis
+de datos de redes sociales se ha convertido en un componente crucial
+para las estrategias de marketing y toma de decisiones empresariales. En
+este proyecto, nos enfocamos en la aplicación de técnicas de
+inteligencia artificial para la extracción, análisis y asignación de
+anuncios basados en datos obtenidos de la plataforma Twitter.
 
 \subsection{Brainstorming}\label{brainstorming}
 
@@ -358,29 +384,26 @@ actividades en una línea temporal.
 
 \paragraph{Extracción de datos}\label{extracciuxf3n-de-datos-1}
 
-Durante la fase inicial de nuestro proyecto, nos enfrentamos a un
+Durante la fase inicial de nuestro proyecto, nos encontramos con un
 desafío inesperado al intentar extraer datos de la plataforma Twitter
-utilizando su API. Nos dimos cuenta de que las configuraciones de
-privacidad habían experimentado cambios significativos, lo que nos
-impedía acceder a la información de manera directa como habíamos
-planeado inicialmente. Ante esta situación, adoptamos un enfoque
-alternativo y multidimensional para recopilar los datos requeridos. Por
-un lado, recurrimos a técnicas de web scraping, un método que implica la
-extracción de información directamente desde el código HTML de las
-páginas web relevantes. Este enfoque nos permitió obtener acceso a datos
-públicos disponibles en perfiles y publicaciones de Twitter, superando
-así las restricciones impuestas por la API. Por otro lado, empleamos una
-estrategia de ``fuerza bruta'' para recopilar datos de interés. A través
-de esta técnica, pudimos obtener información valiosa mediante la
-exploración exhaustiva y sistemática de diversas fuentes de datos
-disponibles públicamente. Además, es importante destacar que el web
-scraping, a pesar de sus beneficios, requiere una cuidadosa
-consideración ética y legal para garantizar el cumplimiento de las
-políticas y regulaciones vigentes. En resumen, nuestro enfoque combinado
-de web scraping y fuerza bruta nos permitió superar los obstáculos
-iniciales y obtener un conjunto integral de datos de Twitter,
-proporcionando así una base sólida para nuestro análisis y
-recomendaciones.
+utilizando su API, ya que las configuraciones de privacidad habían
+experimentado cambios significativos, lo que nos impedía acceder a la
+información de manera directa como habíamos planeado inicialmente. Ante
+esta situación, optamos por un enfoque alternativo y eficaz mediante el
+uso de Twint para realizar web scraping. Twint es una herramienta de
+scraping para Twitter que nos permitió acceder a datos públicos
+disponibles en perfiles y publicaciones, superando así las restricciones
+impuestas por la API. Esta estrategia nos permitió recopilar una gran
+cantidad de datos relevantes de manera eficiente y sin violar las
+políticas de privacidad de la plataforma. Además, en paralelo a la
+extracción de datos con Twint, estábamos utilizando una estrategia de
+``fuerza bruta'' para recopilar información adicional. Esta técnica nos
+permitió explorar exhaustivamente diversas fuentes de datos públicos,
+complementando así los datos obtenidos a través del web scraping con
+Twint. En resumen, el uso combinado de Twint y la extracción de datos
+con fuerza bruta nos proporcionó una solución integral para obtener
+datos valiosos de Twitter, sentando así las bases para nuestro posterior
+análisis y recomendaciones.
 
 \paragraph{IA para análisis de
 sentimiento}\label{ia-para-anuxe1lisis-de-sentimiento}

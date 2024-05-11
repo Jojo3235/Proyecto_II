@@ -17,7 +17,22 @@ format:
     keep-tex: true
 ---
 
+
+
+**ABSTRACT**
+
+El proyecto se enfoca en la extracción y análisis de datos de Twitter para la recomendación de anuncios personalizados. Para superar las limitaciones de la API de Twitter, se implementaron técnicas de web scraping con Twint y extracción de datos por "fuerza bruta". Con esta información obtenida, se procedió a aplicar técnicas de análisis de sentimientos para comprender las emociones expresadas en los comentarios. Además, se utilizó el modelado de temas para identificar los principales temas discutidos en la plataforma. Integrando estos resultados, se desarrolló un sistema de asignación de anuncios dinámico que se adapta a los temas identificados, mejorando así la relevancia y efectividad de la publicidad dirigida.
+
+**Palabras clave:** marketing - anuncios - sentiment analysis - topic modeling
+
+
 {{< pagebreak >}}
+
+
+
+## Introducción
+
+En el contexto del creciente panorama digital, la extracción y análisis de datos de redes sociales se ha convertido en un componente crucial para las estrategias de marketing y toma de decisiones empresariales. En este proyecto, nos enfocamos en la aplicación de técnicas de inteligencia artificial para la extracción, análisis y asignación de anuncios basados en datos obtenidos de la plataforma Twitter.
 
 ## Brainstorming
 
@@ -27,7 +42,7 @@ Se seleccionó una idea centrada en el ámbito del análisis de datos en redes s
 
 
 
-#### Necesidades:
+#### Necesidades
 
 Al haber seleccionado la idea centrada en el análisis de datos en redes sociales para la recomendación de anuncios, se pone de manifiesto la importancia de estar actualizados, ser precisos y comprender las respuestas de los clientes. Estas necesidades reflejan la relevancia de mantenerse al tanto de las tendencias cambiantes en línea, la precisión en la interpretación de datos y la comprensión profunda de las interacciones de los clientes en entornos digitales. Este enfoque resalta la importancia estratégica del marketing en un mundo cada vez más impulsado por la información y las interacciones en línea.
 
@@ -217,28 +232,28 @@ En conclusión, el proyecto representa un paso significativo hacia una publicida
 
 {{< pagebreak >}}
 
-## Bibliografía:
+## Bibliografía
 
 
-Kaggle. (n.d.). IMDb Dataset of 50K Movie Reviews. Retrieved from 
+* Kaggle. (n.d.). IMDb Dataset of 50K Movie Reviews. Retrieved from 
 
-https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
-
-
-Silge, J., & Robinson, D. (2017). Tidy Text Mining with R. O'Reilly Media.
-
-Python Twitter. (n.d.). Getting Started. Retrieved from 
-
-https://python-twitter.readthedocs.io/en/latest/getting_started.html
+    https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
 
 
+* Silge, J., & Robinson, D. (2017). Tidy Text Mining with R. O'Reilly Media.
+
+* Python Twitter. (n.d.). Getting Started. Retrieved from 
+
+    https://python-twitter.readthedocs.io/en/latest/getting_started.html
 
 
-Kaggle. (n.d.). Massive Rotten Tomatoes Movies & Reviews. Retrieved from 
+* Kaggle. (n.d.). Massive Rotten Tomatoes Movies & Reviews. Retrieved from 
 
-https://www.kaggle.com/datasets/andrezaza/clapper-massive-rotten-tomatoes-movies-and-reviews
+    https://www.kaggle.com/datasets/andrezaza/clapper-massive-rotten-tomatoes-movies-and-reviews
 
 
-Silge, J., & Robinson, D. (2017). Tidy Text Mining with R: Topic Modeling. Retrieved from 
+* Silge, J., & Robinson, D. (2017). Tidy Text Mining with R: Topic Modeling. Retrieved from 
 
-https://www.tidytextmining.com/topicmodeling#alternative-lda-implementations
+    https://www.tidytextmining.com/topicmodeling#alternative-lda-implementations
+
+
