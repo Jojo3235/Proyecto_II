@@ -18,18 +18,11 @@ format:
 ---
 
 
-**Resumen**
+**ABSTRACT**
 
-Este proyecto tiene como objetivo principal mejorar la efectividad de la publicidad digital mediante el análisis de datos en redes sociales, específicamente en la plataforma Twitter. Se emplearán técnicas avanzadas de inteligencia artificial y minería de datos para extraer, analizar y comprender los comentarios y opiniones de los usuarios en tiempo real.
-
-El proyecto se divide en varias etapas clave, que incluyen la extracción de datos de Twitter, el análisis de sentimientos para comprender las actitudes de los usuarios sobre ciertos temas, el modelado de temas para identificar el foco principal del cual hablan los usuarios y la asignación de anuncios basada en los intereses y comportamientos de los usuarios.
-
-A través de este enfoque, se busca ofrecer recomendaciones de anuncios más relevantes y personalizadas, maximizando así el impacto de la publicidad dirigida y mejorando la experiencia del usuario en línea. Además, el proyecto explorará las implicaciones estratégicas y las oportunidades potenciales que este enfoque brinda en el contexto del marketing digital y más allá.
-
-En resumen, este proyecto representa un paso significativo hacia una publicidad más inteligente y centrada en el usuario, aprovechando el vasto conjunto de datos disponibles en las redes sociales para informar decisiones comerciales más acertadas y estratégicas.
+El proyecto se enfoca en la extracción y análisis de datos de Twitter para la recomendación de anuncios personalizados. Para superar las limitaciones de la API de Twitter, se implementaron técnicas de web scraping con Twint y extracción de datos por "fuerza bruta". Con esta información obtenida, se procedió a aplicar técnicas de análisis de sentimientos para comprender las emociones expresadas en los comentarios. Además, se utilizó el modelado de temas para identificar los principales temas discutidos en la plataforma. Integrando estos resultados, se desarrolló un sistema de asignación de anuncios dinámico que se adapta a los temas identificados, mejorando así la relevancia y efectividad de la publicidad dirigida.
 
 **Palabras clave:** marketing - anuncios - sentiment analysis - topic modeling
-
 
 
 {{< pagebreak >}}
@@ -40,15 +33,15 @@ En resumen, este proyecto representa un paso significativo hacia una publicidad 
 
 En el contexto del creciente panorama digital, la extracción y análisis de datos de redes sociales se ha convertido en un componente crucial para las estrategias de marketing y toma de decisiones empresariales. En este proyecto, nos enfocamos en la aplicación de técnicas de inteligencia artificial para la extracción, análisis y asignación de anuncios basados en datos obtenidos de la plataforma Twitter.
 
-
 ## Brainstorming
 
 Durante el brainstorming, se exploraron diversas áreas de interés, desde la seguridad informática con el análisis de correos maliciosos y el desarrollo de un detector de malware, hasta la aplicación de la teoría de juegos para identificar posibles trampas, lo que representa un enfoque innovador con amplias implicaciones. Además, se abordó el campo de la inteligencia artificial con la creación de un modelo de generación de texto, lo que refleja un interés en tecnologías avanzadas y su impacto potencial.
 
-Se seleccionó una idea centrada en el ámbito del análisis de datos en redes sociales para la recomendación de anuncios. Esta decisión se llevó a cabo debido a la relevancia y actualidad de este tema en el contexto del marketing digital y la publicidad en línea. La capacidad de aprovechar la información generada por los usuarios en plataformas como Twitter para ofrecer recomendaciones de anuncios más efectivas y personalizadas es un enfoque estratégico que destaca la importancia de la inteligencia de datos en el mundo empresarial actual.
+Se seleccionó una idea centrada en el ámbito del análisis de datos en redes sociales para la recomendación de anuncios. Esta propuesta demuestra una comprensión perspicaz del papel cada vez más relevante que desempeñan las opiniones y tendencias en línea en el mundo del marketing digital.
 
 
-## Necesidades:
+
+#### Necesidades
 
 Al haber seleccionado la idea centrada en el análisis de datos en redes sociales para la recomendación de anuncios, se pone de manifiesto la importancia de estar actualizados, ser precisos y comprender las respuestas de los clientes. Estas necesidades reflejan la relevancia de mantenerse al tanto de las tendencias cambiantes en línea, la precisión en la interpretación de datos y la comprensión profunda de las interacciones de los clientes en entornos digitales. Este enfoque resalta la importancia estratégica del marketing en un mundo cada vez más impulsado por la información y las interacciones en línea.
 
@@ -60,6 +53,7 @@ El objetivo de la extracción de datos y opiniones en redes sociales de usuarios
 
 
 Además, este enfoque puede tener usos alternativos significativos que van más allá de la recomendación de anuncios. Por ejemplo, la extracción de datos y opiniones en redes sociales puede ser invaluable para la investigación de clientes, permitiendo una comprensión más profunda de sus necesidades, preferencias y comportamientos en línea. Asimismo, la identificación de *Brand Ambassadors*, es decir, usuarios influyentes que puedan promover de manera auténtica una marca, es otro beneficio clave de esta estrategia. Además, el manejo de reputación en línea se ve reforzado por la capacidad de monitorear y responder de manera proactiva a las interacciones en redes sociales, lo que puede impactar positivamente la percepción pública de una empresa o producto. Estos son solo algunos ejemplos de cómo este enfoque puede ser aprovechado para una variedad de aplicaciones estratégicas más allá de la publicidad y recomendaciones comerciales.
+
 
 
 ## Tareas
@@ -115,64 +109,9 @@ Tuvimos que realizar 2 diagramas, por un lado el diagrama de desarrollo, que mue
 
 ## Proyecto
 
-#### Extracción de Datos
+#### Extracción de datos
 
-La extracción de datos es una parte fundamental de la minería de datos en redes sociales. Para este proyecto, se pensó en extraer datos de Twitter, una de las plataformas más populares para la interacción en línea. Originalmente, contemplamos utilizar la API de Twitter para acceder a datos como perfiles de usuario, publicaciones y mucho más. Sin embargo, cambios recientes en la política de acceso de la API nos llevaron a adoptar técnicas de web scraping como alternativa eficaz.
-
-El web scraping implica la extracción automatizada de datos del HTML de páginas web. En nuestro caso, extraemos información pública de tweets, incluyendo el contenido completo, número de retweets, likes y los nombres de usuario. Esta información se almacena en formatos estructurados como CSV para su análisis posterior.
-
-Es importante destacar que nuestro enfoque se centra exclusivamente en información pública, sin infringir la privacidad ni las normativas legales, asegurando que nuestra recopilación de datos se utiliza únicamente con fines investigativos y académicos.
-
-Además, optamos por analizar los textos en inglés para facilitar la integración con las redes neuronales empleadas en el análisis de sentimientos y el topic modeling.
-
-``` python
-# Importamos las librerías necesarias
-from twikit import Client
-import pandas as pd
-
-# Creamos un cliente de Twitter con las credenciales necesarias
-client = Client('en-US')
-
-## Esta parte solo se runea la primera vez para guardar las cookies, después la comentamos o eliminamos
-# client.login(
-#     auth_info_1='_____________',
-#     password='______',
-# )
-# client.save_cookies('cookies.json');
-
-# Cargamos las cookies para no tener que iniciar sesión cada vez
-client.load_cookies(path='cookies.json');
-
-# Obtenemos los tweets de un usuario específico (esto se modifica a mano para cada persona)
-user = client.get_user_by_screen_name('ElonMusk')
-tweets = user.get_tweets('Tweets')
-
-# Creamos una lista vacía para almacenar los tweets
-tweets_to_store = [];
-
-# Iteramos sobre los tweets para extraer la información relevante
-iter = 0
-Itmax = 2
-
-while iter < Itmax:
-    for tweet in tweets:
-        tweets_to_store.append({
-            'created_at': tweet.created_at,
-            'favorite_count': tweet.favorite_count,
-            'full_text': tweet.text,
-            'user': tweet.user.screen_name,
-        })
-    tweets = tweets.next()
-    iter += 1
-    print(len(tweets_to_store))
-
-# Convertimos la lista de tweets en un marco de datos de pandas
-df = pd.DataFrame(tweets_to_store)
-# Guardamos los tweets en un archivo CSV
-df.to_csv('tweets.csv', index=False)
-```
-
-Una vez hemos obtenido los datos, podemos proceder a la siguiente fase del proyecto, el análisis de sentimientos.
+Durante la fase inicial de nuestro proyecto, nos encontramos con un desafío inesperado al intentar extraer datos de la plataforma Twitter utilizando su API, ya que las configuraciones de privacidad habían experimentado cambios significativos, lo que nos impedía acceder a la información de manera directa como habíamos planeado inicialmente. Ante esta situación, optamos por un enfoque alternativo y eficaz mediante el uso de Twint para realizar web scraping. Twint es una herramienta de scraping para Twitter que nos permitió acceder a datos públicos disponibles en perfiles y publicaciones, superando así las restricciones impuestas por la API. Esta estrategia nos permitió recopilar una gran cantidad de datos relevantes de manera eficiente y sin violar las políticas de privacidad de la plataforma. Además, en paralelo a la extracción de datos con Twint, estábamos utilizando una estrategia de "fuerza bruta" para recopilar información adicional. Esta técnica nos permitió explorar exhaustivamente diversas fuentes de datos públicos, complementando así los datos obtenidos a través del web scraping con Twint. En resumen, el uso combinado de Twint y la extracción de datos con fuerza bruta nos proporcionó una solución integral para obtener datos valiosos de Twitter, sentando así las bases para nuestro posterior análisis y recomendaciones.
 
 #### IA para análisis de sentimiento
 El análisis de sentimiento implica la aplicación de técnicas avanzadas de inteligencia artificial para comprender la carga emocional de los mensajes expresados en las redes sociales. 
@@ -191,7 +130,9 @@ A la hora de realizar test con texto extraído de twitter y comparar la positivi
 
 VADER _(Valence Aware Dictionary and sEntiment Reasoner)_ es un sentiment lexicon basado en reglas gramaticales diseñado específicamente para analizar sentimientos expresados en redes sociales. VADER es capaz de analizar la positidad/neutralidad/negatividad un texto y dar un puntuaje ente -1 y 1, y al estar  basado en reglas gramaticales soluciona la mayoría de los principales problemas como la negación o el uso de exclamaciones, e incluso tomar la intensidad de palabras en mayúsculas o tomar sentimientos de emojis hechos con caracteres como “ \text{:(} ”.
 
-Para probar el rendimietno de VADER se utilizaron principalmente 2 datasets pertenecientes a kaggle, IMDB Dataset of 50K Movie Reviews y Massive Rotten Tomatoes Movies & Reviews. Ambos datsets de 50.000 y 1444963 filas respectivamente, contienen reviews de paginas como IMDB y Rotten Tomatoes junto con un sentimiento positivo y negativo asociado. Tras comparar los resultados se obtiene que VADER tuvo un 69,226% de aciertos con el dataset de IMDB y un 58,278% de aciertos, que no esta nada mal comparado con el resto de lexicons, sin embargo, la tolerancia entre falsos sentimientos positivos o falsos sentimientos negativos se pude ir ajustando dependiendo de las restricciones que tenga el análisis.
+Para probar el rendimietno de VADER se utilizaron principalmente 2 datasets pertenecientes a kaggle, IMDB Dataset of 50K Movie Reviews\footnote{Retrieved from
+https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
+} y Massive Rotten Tomatoes Movies & Reviews\footnote{Retrieved from https://www.kaggle.com/datasets/andrezaza/clapper-massive-rotten-tomatoes-movies-and-reviews}. Ambos datsets de 50.000 y 1444963 filas respectivamente, contienen reviews de paginas como IMDB y Rotten Tomatoes junto con un sentimiento positivo y negativo asociado. Tras comparar los resultados se obtiene que VADER tuvo un 69,226% de aciertos con el dataset de IMDB y un 58,278% de aciertos, que no esta nada mal comparado con el resto de lexicons, sin embargo, la tolerancia entre falsos sentimientos positivos o falsos sentimientos negativos se pude ir ajustando dependiendo de las restricciones que tenga el análisis.
 
 #### IA para topic modeling (clasificar por temas)
 El topic modeling es una técnica poderosa en el análisis de datos que permite identificar y categorizar automáticamente los temas principales discutidos en grandes conjuntos de documentos, como los mensajes de redes sociales. En este proyecto, se ha empleado inteligencia artificial para llevar a cabo esta tarea de manera eficiente y precisa. Además de utilizar algoritmos estándar como LSA (Análisis Semántico Latente) y LDA (Asignación Latente de Dirichlet), se exploran métodos emergentes que mejoren la segmentación y comprensión de las discusiones en la plataforma. Esto permitirá una visión más profunda de las tendencias y preocupaciones de los usuarios, proporcionando así una base sólida para la asignación estratégica de anuncios.
@@ -250,20 +191,7 @@ result_df.to_csv("user_classifications.csv", index=False)
 print(result_df.head())
 ```
 
-Este código nos da como resultado un archivo CSV con la clasificación de los usuarios y los temas identificados en sus tweets. Esta información es valiosa para la segmentación de los usuarios y la asignación de anuncios personalizados. Junto con el análisis de sentimientos nos quedaría una tabla de la siguiente forma:
-
-| Usuario | Sentimiento (Índice de favorabilidad sobre el tema) | Tema |
-
-
-![Resultado](topic.png)
-
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth, height=0.4\textheight]{bytopic.png}
-    \caption{Términos comunes}
-    \label{fig:terminos_comunes}
-\end{figure}
+Este código nos da como resultado un archivo CSV con la clasificación de los usuarios y los temas identificados en sus tweets. Esta información es valiosa para la segmentación de los usuarios y la asignación de anuncios personalizados. 
 
 
 
@@ -287,10 +215,11 @@ En un nivel más técnico, lo que se haría sería, dado un resumen del anuncio,
 
 | Empresa anunciante | Anuncio | Resumen | Tema |
 
-Una vez tenemos ambas tablas en la base de datos simplemente se hará un join entre ambas tablas para los elementos cuya favorabilidad sea positiva y se mostrará el anuncio a los usuarios que coincidan con el tema del anuncio. 
+Una vez tenemos ambas tablas en la base de datos simplemente se hará un join entre ambas tablas y se mostrará el anuncio a los usuarios que coincidan con el tema del anuncio. 
 
 
 ## Conclusiones
+
 
 El proyecto de análisis de datos en redes sociales para la recomendación de anuncios representa una amalgama de enfoques avanzados en inteligencia artificial y minería de datos aplicados al mundo del marketing digital. A través de técnicas como el análisis de sentimientos, el modelado de temas y la asignación dinámica de anuncios, se busca comprender y aprovechar la vasta cantidad de información generada en plataformas como Twitter para ofrecer recomendaciones de anuncios más relevantes y efectivas.
 
@@ -302,26 +231,67 @@ En conclusión, el proyecto representa un paso significativo hacia una publicida
 
 {{< pagebreak >}}
 
-## Bibliografía:
+## Bibliografía
 
-Aquí tienes la bibliografía en formato APA:
 
-Kaggle. (n.d.). IMDb Dataset of 50K Movie Reviews. Retrieved from https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
+* Kaggle. (n.d.). IMDb Dataset of 50K Movie Reviews. Retrieved from 
 
-MaartenGr. (n.d.). BERTopic. Retrieved from https://github.com/MaartenGr/BERTopic
+    https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
 
-Wikipedia. (n.d.). Latent Dirichlet Allocation. Retrieved from https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
 
-Silge, J., & Robinson, D. (2017). Tidy Text Mining with R. O'Reilly Media.
+* Silge, J., & Robinson, D. (2017). Tidy Text Mining with R. O'Reilly Media.
 
-Python Twitter. (n.d.). Getting Started. Retrieved from 
+* Python Twitter. (n.d.). Getting Started. Retrieved from 
 
-https://python-twitter.readthedocs.io/en/latest/getting_started.html
+    https://python-twitter.readthedocs.io/en/latest/getting_started.html
 
-Kaggle. (n.d.). Massive Rotten Tomatoes Movies & Reviews. Retrieved from 
 
-https://www.kaggle.com/datasets/andrezaza/clapper-massive-rotten-tomatoes-movies-and-reviews
+* Kaggle. (n.d.). Massive Rotten Tomatoes Movies & Reviews. Retrieved from 
 
-Silge, J., & Robinson, D. (2017). Tidy Text Mining with R: Topic Modeling. Retrieved from 
+    https://www.kaggle.com/datasets/andrezaza/clapper-massive-rotten-tomatoes-movies-and-reviews
 
-https://www.tidytextmining.com/topicmodeling#alternative-lda-implementations
+
+* Silge, J., & Robinson, D. (2017). Tidy Text Mining with R: Topic Modeling. Retrieved from 
+
+    https://www.tidytextmining.com/topicmodeling#alternative-lda-implementations
+
+
+* Aprende Python. "Web Scraping con Python y BeautifulSoup".    
+    
+    Disponible en: https://aprendepython.es/pypi/scraping/beautifulsoup/
+
+
+* Documentación oficial de BeautifulSoup: 
+    
+    https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+
+
+
+* Twitter Developer. "Tools and Libraries". 
+
+    Disponible en: https://developer.twitter.com/en/docs/twitter-api/tools-and-libraries/v2
+
+
+* Python Twitter. Documentación oficial. 
+    
+    Disponible en: https://python-twitter.readthedocs.io/en/latest/getting_started.html
+
+* Ron Atkaya. "How to Scrape Tweets from Twitter for Free (2023)". 
+
+    Disponible en: https://medium.com/@mronatkaya/how-to-scrape-tweets-from-twitter-for-free-2023-7562fd8121cc
+
+* Robert Brown. "How to Scrape Twitter Data: A Step-by-Step Guide". 
+    
+    Disponible en: https://medium.com/@robertbrown15228/how-to-scrape-twitter-data-a-step-by-step-guide-1221de91a23a#:~:text=Twitter%20data%20is%20crucial%20in,making%20and%20targeted%20marketing%20strategies.
+
+* Twitter Developer. "Search Tweets: Python". 
+
+    Disponible en: https://github.com/twitterdev/search-tweets-python
+
+* Julia Silge y David Robinson. "Tidy Text Mining with R". 
+
+    Disponible en: https://www.tidytextmining.com/topicmodeling
+
+* Julia Silge y David Robinson. "Tidy Text Mining with R". 
+    
+    Disponible en: https://www.tidytextmining.com/sentiment

@@ -202,19 +202,33 @@ Cristina Suárez \and Universidad San Pablo CEU}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
-\textbf{ABSTRACT}
+\textbf{Resumen}
 
-El proyecto se enfoca en la extracción y análisis de datos de Twitter
-para la recomendación de anuncios personalizados. Para superar las
-limitaciones de la API de Twitter, se implementaron técnicas de web
-scraping con Twint y extracción de datos por ``fuerza bruta''. Con esta
-información obtenida, se procedió a aplicar técnicas de análisis de
-sentimientos para comprender las emociones expresadas en los
-comentarios. Además, se utilizó el modelado de temas para identificar
-los principales temas discutidos en la plataforma. Integrando estos
-resultados, se desarrolló un sistema de asignación de anuncios dinámico
-que se adapta a los temas identificados, mejorando así la relevancia y
-efectividad de la publicidad dirigida.
+Este proyecto tiene como objetivo principal mejorar la efectividad de la
+publicidad digital mediante el análisis de datos en redes sociales,
+específicamente en la plataforma Twitter. Se emplearán técnicas
+avanzadas de inteligencia artificial y minería de datos para extraer,
+analizar y comprender los comentarios y opiniones de los usuarios en
+tiempo real.
+
+El proyecto se divide en varias etapas clave, que incluyen la extracción
+de datos de Twitter, el análisis de sentimientos para comprender las
+actitudes de los usuarios sobre ciertos temas, el modelado de temas para
+identificar el foco principal del cual hablan los usuarios y la
+asignación de anuncios basada en los intereses y comportamientos de los
+usuarios.
+
+A través de este enfoque, se busca ofrecer recomendaciones de anuncios
+más relevantes y personalizadas, maximizando así el impacto de la
+publicidad dirigida y mejorando la experiencia del usuario en línea.
+Además, el proyecto explorará las implicaciones estratégicas y las
+oportunidades potenciales que este enfoque brinda en el contexto del
+marketing digital y más allá.
+
+En resumen, este proyecto representa un paso significativo hacia una
+publicidad más inteligente y centrada en el usuario, aprovechando el
+vasto conjunto de datos disponibles en las redes sociales para informar
+decisiones comerciales más acertadas y estratégicas.
 
 \textbf{Palabras clave:} marketing - anuncios - sentiment analysis -
 topic modeling
@@ -242,12 +256,15 @@ de texto, lo que refleja un interés en tecnologías avanzadas y su
 impacto potencial.
 
 Se seleccionó una idea centrada en el ámbito del análisis de datos en
-redes sociales para la recomendación de anuncios. Esta propuesta
-demuestra una comprensión perspicaz del papel cada vez más relevante que
-desempeñan las opiniones y tendencias en línea en el mundo del marketing
-digital.
+redes sociales para la recomendación de anuncios. Esta decisión se llevó
+a cabo debido a la relevancia y actualidad de este tema en el contexto
+del marketing digital y la publicidad en línea. La capacidad de
+aprovechar la información generada por los usuarios en plataformas como
+Twitter para ofrecer recomendaciones de anuncios más efectivas y
+personalizadas es un enfoque estratégico que destaca la importancia de
+la inteligencia de datos en el mundo empresarial actual.
 
-\paragraph{Necesidades}\label{necesidades}
+\subsection{Necesidades:}\label{necesidades}
 
 Al haber seleccionado la idea centrada en el análisis de datos en redes
 sociales para la recomendación de anuncios, se pone de manifiesto la
@@ -382,28 +399,82 @@ actividades en una línea temporal.
 
 \subsection{Proyecto}\label{proyecto}
 
-\paragraph{Extracción de datos}\label{extracciuxf3n-de-datos-1}
+\paragraph{Extracción de Datos}\label{extracciuxf3n-de-datos-1}
 
-Durante la fase inicial de nuestro proyecto, nos encontramos con un
-desafío inesperado al intentar extraer datos de la plataforma Twitter
-utilizando su API, ya que las configuraciones de privacidad habían
-experimentado cambios significativos, lo que nos impedía acceder a la
-información de manera directa como habíamos planeado inicialmente. Ante
-esta situación, optamos por un enfoque alternativo y eficaz mediante el
-uso de Twint para realizar web scraping. Twint es una herramienta de
-scraping para Twitter que nos permitió acceder a datos públicos
-disponibles en perfiles y publicaciones, superando así las restricciones
-impuestas por la API. Esta estrategia nos permitió recopilar una gran
-cantidad de datos relevantes de manera eficiente y sin violar las
-políticas de privacidad de la plataforma. Además, en paralelo a la
-extracción de datos con Twint, estábamos utilizando una estrategia de
-``fuerza bruta'' para recopilar información adicional. Esta técnica nos
-permitió explorar exhaustivamente diversas fuentes de datos públicos,
-complementando así los datos obtenidos a través del web scraping con
-Twint. En resumen, el uso combinado de Twint y la extracción de datos
-con fuerza bruta nos proporcionó una solución integral para obtener
-datos valiosos de Twitter, sentando así las bases para nuestro posterior
-análisis y recomendaciones.
+La extracción de datos es una parte fundamental de la minería de datos
+en redes sociales. Para este proyecto, se pensó en extraer datos de
+Twitter, una de las plataformas más populares para la interacción en
+línea. Originalmente, contemplamos utilizar la API de Twitter para
+acceder a datos como perfiles de usuario, publicaciones y mucho más. Sin
+embargo, cambios recientes en la política de acceso de la API nos
+llevaron a adoptar técnicas de web scraping como alternativa eficaz.
+
+El web scraping implica la extracción automatizada de datos del HTML de
+páginas web. En nuestro caso, extraemos información pública de tweets,
+incluyendo el contenido completo, número de retweets, likes y los
+nombres de usuario. Esta información se almacena en formatos
+estructurados como CSV para su análisis posterior.
+
+Es importante destacar que nuestro enfoque se centra exclusivamente en
+información pública, sin infringir la privacidad ni las normativas
+legales, asegurando que nuestra recopilación de datos se utiliza
+únicamente con fines investigativos y académicos.
+
+Además, optamos por analizar los textos en inglés para facilitar la
+integración con las redes neuronales empleadas en el análisis de
+sentimientos y el topic modeling.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Importamos las librerías necesarias}
+\ImportTok{from}\NormalTok{ twikit }\ImportTok{import}\NormalTok{ Client}
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+
+\CommentTok{\# Creamos un cliente de Twitter con las credenciales necesarias}
+\NormalTok{client }\OperatorTok{=}\NormalTok{ Client(}\StringTok{\textquotesingle{}en{-}US\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\#\# Esta parte solo se runea la primera vez para guardar las cookies, después la comentamos o eliminamos}
+\CommentTok{\# client.login(}
+\CommentTok{\#     auth\_info\_1=\textquotesingle{}\_\_\_\_\_\_\_\_\_\_\_\_\_\textquotesingle{},}
+\CommentTok{\#     password=\textquotesingle{}\_\_\_\_\_\_\textquotesingle{},}
+\CommentTok{\# )}
+\CommentTok{\# client.save\_cookies(\textquotesingle{}cookies.json\textquotesingle{});}
+
+\CommentTok{\# Cargamos las cookies para no tener que iniciar sesión cada vez}
+\NormalTok{client.load\_cookies(path}\OperatorTok{=}\StringTok{\textquotesingle{}cookies.json\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{\# Obtenemos los tweets de un usuario específico (esto se modifica a mano para cada persona)}
+\NormalTok{user }\OperatorTok{=}\NormalTok{ client.get\_user\_by\_screen\_name(}\StringTok{\textquotesingle{}ElonMusk\textquotesingle{}}\NormalTok{)}
+\NormalTok{tweets }\OperatorTok{=}\NormalTok{ user.get\_tweets(}\StringTok{\textquotesingle{}Tweets\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Creamos una lista vacía para almacenar los tweets}
+\NormalTok{tweets\_to\_store }\OperatorTok{=}\NormalTok{ []}\OperatorTok{;}
+
+\CommentTok{\# Iteramos sobre los tweets para extraer la información relevante}
+\BuiltInTok{iter} \OperatorTok{=} \DecValTok{0}
+\NormalTok{Itmax }\OperatorTok{=} \DecValTok{2}
+
+\ControlFlowTok{while} \BuiltInTok{iter} \OperatorTok{\textless{}}\NormalTok{ Itmax:}
+    \ControlFlowTok{for}\NormalTok{ tweet }\KeywordTok{in}\NormalTok{ tweets:}
+\NormalTok{        tweets\_to\_store.append(\{}
+            \StringTok{\textquotesingle{}created\_at\textquotesingle{}}\NormalTok{: tweet.created\_at,}
+            \StringTok{\textquotesingle{}favorite\_count\textquotesingle{}}\NormalTok{: tweet.favorite\_count,}
+            \StringTok{\textquotesingle{}full\_text\textquotesingle{}}\NormalTok{: tweet.text,}
+            \StringTok{\textquotesingle{}user\textquotesingle{}}\NormalTok{: tweet.user.screen\_name,}
+\NormalTok{        \})}
+\NormalTok{    tweets }\OperatorTok{=}\NormalTok{ tweets.}\BuiltInTok{next}\NormalTok{()}
+    \BuiltInTok{iter} \OperatorTok{+=} \DecValTok{1}
+    \BuiltInTok{print}\NormalTok{(}\BuiltInTok{len}\NormalTok{(tweets\_to\_store))}
+
+\CommentTok{\# Convertimos la lista de tweets en un marco de datos de pandas}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(tweets\_to\_store)}
+\CommentTok{\# Guardamos los tweets en un archivo CSV}
+\NormalTok{df.to\_csv(}\StringTok{\textquotesingle{}tweets.csv\textquotesingle{}}\NormalTok{, index}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Una vez hemos obtenido los datos, podemos proceder a la siguiente fase
+del proyecto, el análisis de sentimientos.
 
 \paragraph{IA para análisis de
 sentimiento}\label{ia-para-anuxe1lisis-de-sentimiento}
@@ -468,19 +539,16 @@ exclamaciones, e incluso tomar la intensidad de palabras en mayúsculas o
 tomar sentimientos de emojis hechos con caracteres como `` \text{:(} ''.
 
 Para probar el rendimietno de VADER se utilizaron principalmente 2
-datasets pertenecientes a kaggle, IMDB Dataset of 50K Movie
-Reviews\footnote{Retrieved from
-https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
-} y Massive Rotten Tomatoes Movies \&
-Reviews\footnote{Retrieved from https://www.kaggle.com/datasets/andrezaza/clapper-massive-rotten-tomatoes-movies-and-reviews}.
-Ambos datsets de 50.000 y 1444963 filas respectivamente, contienen
-reviews de paginas como IMDB y Rotten Tomatoes junto con un sentimiento
-positivo y negativo asociado. Tras comparar los resultados se obtiene
-que VADER tuvo un 69,226\% de aciertos con el dataset de IMDB y un
-58,278\% de aciertos, que no esta nada mal comparado con el resto de
-lexicons, sin embargo, la tolerancia entre falsos sentimientos positivos
-o falsos sentimientos negativos se pude ir ajustando dependiendo de las
-restricciones que tenga~el~análisis.
+datasets pertenecientes a kaggle, IMDB Dataset of 50K Movie Reviews y
+Massive Rotten Tomatoes Movies \& Reviews. Ambos datsets de 50.000 y
+1444963 filas respectivamente, contienen reviews de paginas como IMDB y
+Rotten Tomatoes junto con un sentimiento positivo y negativo asociado.
+Tras comparar los resultados se obtiene que VADER tuvo un 69,226\% de
+aciertos con el dataset de IMDB y un 58,278\% de aciertos, que no esta
+nada mal comparado con el resto de lexicons, sin embargo, la tolerancia
+entre falsos sentimientos positivos o falsos sentimientos negativos se
+pude ir ajustando dependiendo de las restricciones que
+tenga~el~análisis.
 
 \paragraph{IA para topic modeling (clasificar por
 temas)}\label{ia-para-topic-modeling-clasificar-por-temas}
@@ -585,7 +653,28 @@ lenguaje, para la clasificación de los mensajes.
 Este código nos da como resultado un archivo CSV con la clasificación de
 los usuarios y los temas identificados en sus tweets. Esta información
 es valiosa para la segmentación de los usuarios y la asignación de
-anuncios personalizados.
+anuncios personalizados. Junto con el análisis de sentimientos nos
+quedaría una tabla de la siguiente forma:
+
+Usuario \textbar{} Sentimiento (Índice de favorabilidad sobre el tema)
+\textbar{} Tema \textbar{}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{topic.png}
+
+}
+
+\caption{Resultado}
+
+\end{figure}%
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth, height=0.4\textheight]{bytopic.png}
+    \caption{Términos comunes}
+    \label{fig:terminos_comunes}
+\end{figure}
 
 En el contexto de nuestro proyecto, donde estamos analizando comentarios
 y usuarios de Twitter para recomendar anuncios, esta explicación sobre
@@ -644,8 +733,9 @@ Empresa anunciante \textbar{} Anuncio \textbar{} Resumen \textbar{} Tema
 \textbar{}
 
 Una vez tenemos ambas tablas en la base de datos simplemente se hará un
-join entre ambas tablas y se mostrará el anuncio a los usuarios que
-coincidan con el tema del anuncio.
+join entre ambas tablas para los elementos cuya favorabilidad sea
+positiva y se mostrará el anuncio a los usuarios que coincidan con el
+tema del anuncio.
 
 \subsection{Conclusiones}\label{conclusiones}
 
@@ -679,71 +769,35 @@ decisiones comerciales más acertadas y estratégicas.
 
 \newpage{}
 
-\subsection{Bibliografía}\label{bibliografuxeda}
+\subsection{Bibliografía:}\label{bibliografuxeda}
 
-\begin{itemize}
-\item
-  Kaggle. (n.d.). IMDb Dataset of 50K Movie Reviews. Retrieved from
+Aquí tienes la bibliografía en formato APA:
 
-  https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
-\item
-  Silge, J., \& Robinson, D. (2017). Tidy Text Mining with R. O'Reilly
-  Media.
-\item
-  Python Twitter. (n.d.). Getting Started. Retrieved from
+Kaggle. (n.d.). IMDb Dataset of 50K Movie Reviews. Retrieved from
+https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
 
-  https://python-twitter.readthedocs.io/en/latest/getting\_started.html
-\item
-  Kaggle. (n.d.). Massive Rotten Tomatoes Movies \& Reviews. Retrieved
-  from
+MaartenGr. (n.d.). BERTopic. Retrieved from
+https://github.com/MaartenGr/BERTopic
 
-  https://www.kaggle.com/datasets/andrezaza/clapper-massive-rotten-tomatoes-movies-and-reviews
-\item
-  Silge, J., \& Robinson, D. (2017). Tidy Text Mining with R: Topic
-  Modeling. Retrieved from
+Wikipedia. (n.d.). Latent Dirichlet Allocation. Retrieved from
+https://en.wikipedia.org/wiki/Latent\_Dirichlet\_allocation
 
-  https://www.tidytextmining.com/topicmodeling\#alternative-lda-implementations
-\item
-  Aprende Python. ``Web Scraping con Python y BeautifulSoup''.
+Silge, J., \& Robinson, D. (2017). Tidy Text Mining with R. O'Reilly
+Media.
 
-  Disponible en: https://aprendepython.es/pypi/scraping/beautifulsoup/
-\item
-  Documentación oficial de BeautifulSoup:
+Python Twitter. (n.d.). Getting Started. Retrieved from
 
-  https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-\item
-  Twitter Developer. ``Tools and Libraries''.
+https://python-twitter.readthedocs.io/en/latest/getting\_started.html
 
-  Disponible en:
-  https://developer.twitter.com/en/docs/twitter-api/tools-and-libraries/v2
-\item
-  Python Twitter. Documentación oficial.
+Kaggle. (n.d.). Massive Rotten Tomatoes Movies \& Reviews. Retrieved
+from
 
-  Disponible en:
-  https://python-twitter.readthedocs.io/en/latest/getting\_started.html
-\item
-  Ron Atkaya. ``How to Scrape Tweets from Twitter for Free (2023)''.
+https://www.kaggle.com/datasets/andrezaza/clapper-massive-rotten-tomatoes-movies-and-reviews
 
-  Disponible en:
-  https://medium.com/@mronatkaya/how-to-scrape-tweets-from-twitter-for-free-2023-7562fd8121cc
-\item
-  Robert Brown. ``How to Scrape Twitter Data: A Step-by-Step Guide''.
+Silge, J., \& Robinson, D. (2017). Tidy Text Mining with R: Topic
+Modeling. Retrieved from
 
-  Disponible en:
-  https://medium.com/@robertbrown15228/how-to-scrape-twitter-data-a-step-by-step-guide-1221de91a23a\#:\textasciitilde:text=Twitter\%20data\%20is\%20crucial\%20in,making\%20and\%20targeted\%20marketing\%20strategies.
-\item
-  Twitter Developer. ``Search Tweets: Python''.
-
-  Disponible en: https://github.com/twitterdev/search-tweets-python
-\item
-  Julia Silge y David Robinson. ``Tidy Text Mining with R''.
-
-  Disponible en: https://www.tidytextmining.com/topicmodeling
-\item
-  Julia Silge y David Robinson. ``Tidy Text Mining with R''.
-
-  Disponible en: https://www.tidytextmining.com/sentiment
-\end{itemize}
+https://www.tidytextmining.com/topicmodeling\#alternative-lda-implementations
 
 
 
